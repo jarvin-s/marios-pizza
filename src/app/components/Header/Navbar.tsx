@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Sheet,
     SheetTrigger,
@@ -15,11 +15,10 @@ import {
 } from '@/components/ui/navigation-menu'
 import { Anton } from 'next/font/google'
 import SignOut from '../Auth/SignOut'
-import { getServerSession } from 'next-auth'
-import SignIn from '../Auth/SignIn'
-import { getSession, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import logo from '../../../../public/logo.svg'
+import Auth from '../Auth/Auth'
+import useSession from '@/app/hooks/useSession'
 
 const anton = Anton({
     weight: '400',
@@ -27,8 +26,7 @@ const anton = Anton({
 })
 
 const Navbar = () => {
-    // const session = await getServerSession()
-    const { data: session } = useSession()
+    const session = useSession()
     return (
         <>
             <header className='sticky top-0 z-[100] flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange backdrop-blur-md md:justify-center'>
@@ -67,28 +65,29 @@ const Navbar = () => {
                                 Home
                             </Link>
                             <Link
-                                href='/our-work'
+                                href='/aanbiedingen'
                                 className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
                                 prefetch={false}
                             >
-                                Contact
+                                Aanbiedingen
                             </Link>
                             <Link
                                 href='/contact'
                                 className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
                                 prefetch={false}
                             >
-                                Aanbiedingen
+                                Contact
                             </Link>
                         </div>
                     </SheetContent>
                 </Sheet>
 
-                <Link href='/' className='mr-6 flex'>
+                <Link href='/' className='flex'>
                     <Image
+                        className='ml-4 md:ml-0'
                         src={logo}
                         alt='Marios Pizza Logo'
-                        width={175}
+                        width={150}
                         height={0}
                     />
                     <span className='sr-only'>Mario's Pizza</span>
@@ -109,11 +108,11 @@ const Navbar = () => {
                             </NavigationMenuLink>
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/contact'
+                                    href='/aanbiedingen'
                                     className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
                                     prefetch={false}
                                 >
-                                    Contact
+                                    Aanbiedingen{' '}
                                 </Link>
                             </NavigationMenuLink>
                             <NavigationMenuLink asChild>
@@ -122,15 +121,16 @@ const Navbar = () => {
                                     className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
                                     prefetch={false}
                                 >
-                                    Aanbiedingen {session?.user?.email}
+                                    Contact
                                 </Link>
                             </NavigationMenuLink>
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
 
-                <div className='ml-auto flex items-center'>
-                    {session?.user ? <SignOut /> : <SignIn />}
+                <div className='ml-auto hidden items-center md:flex'>
+                    {/* {!session ? <SignOut /> : <Auth />} */}
+                    {session ? <SignOut /> : <Auth />}
                 </div>
             </header>
         </>

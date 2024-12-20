@@ -1,7 +1,11 @@
-import Image from 'next/image'
+'use client'
+
 import React from 'react'
+import useSession from '@/app/hooks/useSession'
 
 const Hero = () => {
+    const session = useSession()
+
     return (
         // ! SMALL PIZZA FACE ANIMATION ON HOVER
         // <div className='flex min-h-screen items-center justify-center'>
@@ -16,7 +20,13 @@ const Hero = () => {
         // </div>
         <>
             <div className='flex justify-center'>
-                <h1 className='text-7xl'>Hero</h1>
+                <h1 className='text-7xl'>
+                    Welkom{' '}
+                    {session
+                        ? session.user.user_metadata.first_name
+                        : ''}
+                    !
+                </h1>
             </div>
         </>
     )
