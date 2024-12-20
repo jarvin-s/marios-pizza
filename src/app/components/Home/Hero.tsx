@@ -22,10 +22,7 @@ const Hero = () => {
             <div className='flex justify-center'>
                 <h1 className='text-7xl'>
                     Welkom{' '}
-                    {session
-                        ? session.user.user_metadata.first_name
-                        : ''}
-                    !
+                    {session ? session.user.user_metadata.first_name : ''}
                 </h1>
             </div>
         </>

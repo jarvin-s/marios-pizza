@@ -64,19 +64,33 @@ const Auth = () => {
         e.preventDefault()
         setError('')
 
-        const { data, error } = await supabase.auth.admin.createUser({
+        const { data: userData, error: registerError } =
+            await supabase.auth.admin.createUser({
+                email,
+                password,
+                email_confirm: true,
+                user_metadata: {
+                    first_name: firstName,
+                    last_name: lastName,
+                },
+            })
+
+        if (registerError) {
+            console.log(userData)
+            setError(registerError.message)
+            return
+        }
+
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password,
-            email_confirm: true,
-            user_metadata: {
-                first_name: firstName,
-                last_name: lastName,
-            },
         })
 
         if (error) {
-            console.log(data)
+            console.error('Sign-in error:', error)
             setError(error.message)
+        } else {
+            window.location.reload()
         }
     }
 
