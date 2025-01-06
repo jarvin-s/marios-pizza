@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
     Sheet,
     SheetTrigger,
@@ -47,14 +47,14 @@ const Navbar = () => {
                         side='left'
                     >
                         <SheetTitle className='hidden'>
-                            Mario's Pizza
+                            Mario&apos;s Pizza
                         </SheetTitle>
                         <Link
                             className='flex justify-center'
                             href='#'
                             prefetch={false}
                         >
-                            <span className='sr-only'>Mario's Pizza</span>
+                            <span className='sr-only'>Mario&apos;s Pizza</span>
                         </Link>
                         <div className='grid gap-2 py-6'>
                             <Link
@@ -90,7 +90,7 @@ const Navbar = () => {
                         width={150}
                         height={0}
                     />
-                    <span className='sr-only'>Mario's Pizza</span>
+                    <span className='sr-only'>Mario&apos;s Pizza</span>
                 </Link>
                 <div className='hidden md:flex md:flex-grow md:justify-center'>
                     <NavigationMenu className='hidden md:flex'>
@@ -99,7 +99,7 @@ const Navbar = () => {
                         >
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/'
+                                    href='/menu'
                                     className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
                                     prefetch={false}
                                 >
@@ -139,7 +139,7 @@ const Navbar = () => {
 
 export default Navbar
 
-function MenuIcon(props: any) {
+function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

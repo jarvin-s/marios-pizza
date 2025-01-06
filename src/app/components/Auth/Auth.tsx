@@ -14,7 +14,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Anton } from 'next/font/google'
 import { supabase } from '@/app/lib/supaBaseClient'
-import { User } from '@supabase/supabase-js'
 
 const anton = Anton({
     weight: '400',
@@ -22,7 +21,6 @@ const anton = Anton({
 })
 
 const Auth = () => {
-    const [user, setUser] = useState<User | null>(null)
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -31,23 +29,29 @@ const Auth = () => {
     const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false)
     const [isRegisterDialogOpen, setIsRegisterDialogOpen] = useState(false)
 
-    const handleEmailChange = (event: any) => {
+    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
 
-    const handlePasswordChange = (event: any) => {
+    const handlePasswordChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         setPassword(event.target.value)
     }
-    const handleFirstNameChange = (event: any) => {
+    const handleFirstNameChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         setFirstName(event.target.value)
     }
-    const handleLastNameChange = (event: any) => {
+    const handleLastNameChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         setLastName(event.target.value)
     }
 
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         })
@@ -55,7 +59,6 @@ const Auth = () => {
         if (error) {
             setError(error.message)
         } else {
-            setUser(data.user)
             window.location.reload()
         }
     }
@@ -81,7 +84,7 @@ const Auth = () => {
             return
         }
 
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         })
