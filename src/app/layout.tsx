@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Anton, Poppins } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import Providers from './components/Auth/Providers'
 import Navbar from './components/Header/Navbar'
 
-const anton = Poppins({
+const poppins = Poppins({
     weight: '400',
     subsets: ['latin'],
 })
@@ -12,7 +12,7 @@ const anton = Poppins({
 export const metadata: Metadata = {
     title: "Mario's Pizza",
     description:
-        'An innovative web app to modernize a pizza place, enhancing online ordering and staff efficiency',
+        'An innovative web app to modernise a pizza place, enhancing online ordering and staff efficiency',
 }
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
-            <body className={`${anton.className} antialiased`}>
+            <body className={`${poppins.className} antialiased`}>
                 <Providers>
                     <Navbar />
                     {children}
