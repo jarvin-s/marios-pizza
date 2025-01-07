@@ -43,7 +43,7 @@ const Navbar = () => {
                         </Button>
                     </SheetTrigger>
                     <SheetContent
-                        className='z-[999] bg-primary-cream text-primary-orange'
+                        className={`${anton.className} z-[999] bg-primary-cream uppercase text-primary-orange`}
                         side='left'
                     >
                         <SheetTitle className='hidden'>
@@ -51,29 +51,36 @@ const Navbar = () => {
                         </SheetTitle>
                         <Link
                             className='flex justify-center'
-                            href='#'
+                            href='/'
                             prefetch={false}
                         >
+                            <Image
+                                className='ml-4 md:ml-0'
+                                src={logo}
+                                alt='Marios Pizza Logo'
+                                width={150}
+                                height={0}
+                            />
                             <span className='sr-only'>Mario&apos;s Pizza</span>
                         </Link>
                         <div className='grid gap-2 py-6'>
                             <Link
                                 href='/'
-                                className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
+                                className='flex w-full items-center py-2 text-lg hover:underline'
                                 prefetch={false}
                             >
                                 Home
                             </Link>
                             <Link
                                 href='/aanbiedingen'
-                                className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
+                                className='flex w-full items-center py-2 text-lg hover:underline'
                                 prefetch={false}
                             >
                                 Aanbiedingen
                             </Link>
                             <Link
                                 href='/contact'
-                                className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
+                                className='flex w-full items-center py-2 text-lg hover:underline'
                                 prefetch={false}
                             >
                                 Contact
