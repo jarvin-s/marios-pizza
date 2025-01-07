@@ -10,9 +10,9 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-    title: "Mario's Pizza",
+    title: "Mario's Pizza | Bezorgen & Afhalen",
     description:
-        'An innovative web app to modernise a pizza place, enhancing online ordering and staff efficiency',
+        "Mario's Pizza is een pizza restaurant gebaseerd in Eindhoven & 's Hertogenbosch. We serveren de beste pizza's in het land! Bezorgen en afhalen is mogelijk.",
 }
 
 export default function RootLayout({
@@ -26,6 +26,7 @@ export default function RootLayout({
                 <Providers>
                     <Navbar />
                     {children}
+                    <Footer />
                 </Providers>
             </body>
         </html>
