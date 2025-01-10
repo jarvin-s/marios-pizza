@@ -1,38 +1,57 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import PizzaCard from '../components/Menu/PizzaCard'
-
-const pizzas = [
-    {
-        title: 'Pizza Salami',
-        description:
-            'Rijkelijk belegd met de beste ingrediënten en heerlijke plakjes pittige salami.',
-        price: '10,99',
-        imageUrl: '/images/menu/pizza-salami.jpg',
-    },
-    {
-        title: 'Pizza Margherita',
-        description:
-            'De klassieke pizza met tomatensaus, mozzarella en basilicum.',
-        price: '9,99',
-        imageUrl: '/images/menu/pizza-margherita.jpg',
-    },
-    {
-        title: 'Pizza Hawaii',
-        description:
-            'Een heerlijke combinatie van sappige ananas, ham en gesmolten kaas op een krokante bodem.',
-        price: '11,49',
-        imageUrl: '/images/menu/pizza-hawaii.jpg',
-    },
-]
+import { pizzas } from '../data/pizzaData'
+import { Button } from '@/components/ui/button'
 
 const Menu = () => {
+    const [activeFilter, setActiveFilter] = useState('all')
+
+    const filteredPizzas = pizzas.filter((pizza) => {
+        if (activeFilter === 'all') return true
+        if (activeFilter === 'meat') return !pizza.vegan
+        return pizza.vegan
+    })
+
     return (
         <>
-            <div className='mx-auto min-h-screen max-w-[1440px]'>
-                <div className='grid grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-3'>
-                    {pizzas.map((pizza, index) => (
+            <div className='mx-auto min-h-screen max-w-[1920px] p-0 md:p-20'>
+                <div className='mt-8 flex justify-center gap-4'>
+                    <Button
+                        onClick={() => setActiveFilter('all')}
+                        className={`rounded-lg px-4 py-2 ${
+                            activeFilter === 'all'
+                                ? 'bg-red-500 text-white hover:bg-red-600'
+                                : 'bg-gray-300 text-black hover:bg-gray-400'
+                        }`}
+                    >
+                        Alle
+                    </Button>
+                    <Button
+                        onClick={() => setActiveFilter('meat')}
+                        className={`rounded-lg px-4 py-2 ${
+                            activeFilter === 'meat'
+                                ? 'bg-red-500 text-white hover:bg-red-600'
+                                : 'bg-gray-300 text-black hover:bg-gray-400'
+                        }`}
+                    >
+                        Vlees
+                    </Button>
+                    <Button
+                        onClick={() => setActiveFilter('veggie')}
+                        className={`rounded-lg px-4 py-2 ${
+                            activeFilter === 'veggie'
+                                ? 'bg-green-500 text-white hover:bg-green-600'
+                                : 'bg-gray-300 text-black hover:bg-gray-400'
+                        }`}
+                    >
+                        Vegetarisch
+                    </Button>
+                </div>
+
+                <div className='grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-4 lg:grid-cols-4'>
+                    {filteredPizzas.map((pizza, index) => (
                         <PizzaCard key={index} {...pizza} />
                     ))}
                 </div>
