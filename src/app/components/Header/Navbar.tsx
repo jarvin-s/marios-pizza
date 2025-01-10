@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Sheet,
     SheetTrigger,
@@ -19,18 +19,23 @@ import Image from 'next/image'
 import logo from '../../../../public/logo.svg'
 import Auth from '../Auth/Auth'
 import useSession from '@/app/hooks/useSession'
+import { usePathname } from 'next/navigation'
 
 const anton = Anton({
     weight: '400',
     subsets: ['latin'],
 })
+// Active pagina toevoegen (nav)
 
 const Navbar = () => {
     const session = useSession()
+    const currentPath = usePathname()
+    const [open, setOpen] = useState(false)
+
     return (
         <>
-            <header className='sticky top-0 z-[100] flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange backdrop-blur-md md:justify-center'>
-                <Sheet>
+            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange backdrop-blur-md md:justify-center'>
+                <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button
                             size='icon'
@@ -63,32 +68,51 @@ const Navbar = () => {
                             />
                             <span className='sr-only'>Mario&apos;s Pizza</span>
                         </Link>
+                        <hr className='mt-6 border-t-[1px] border-[#49494923]' />
+                        <div
+                            style={{
+                                textTransform: 'none',
+                                fontFamily: 'poppins',
+                            }}
+                        >
+                            <p className='mt-6 flex justify-center text-3xl'>
+                                {session
+                                    ? 'Hi, ' +
+                                      session?.user.user_metadata.first_name
+                                    : ''}
+                            </p>
+                        </div>
                         <div className='grid gap-2 py-6'>
                             <Link
-                                href='/'
-                                className='flex w-full items-center py-2 text-lg hover:underline'
+                                href='/menu'
+                                className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
+                                onClick={() => setOpen(false)}
                             >
-                                Home
+                                Menu
                             </Link>
                             <Link
                                 href='/aanbiedingen'
-                                className='flex w-full items-center py-2 text-lg hover:underline'
+                                className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
+                                onClick={() => setOpen(false)}
                             >
                                 Aanbiedingen
                             </Link>
                             <Link
                                 href='/contact'
-                                className='flex w-full items-center py-2 text-lg hover:underline'
+                                className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
+                                onClick={() => setOpen(false)}
                             >
                                 Contact
                             </Link>
                         </div>
+                        <div className='mt-6 flex items-end justify-center'>
+                            {session ? <SignOut /> : <Auth />}
+                        </div>
                     </SheetContent>
                 </Sheet>
-
                 <Link href='/' className='flex'>
                     <Image
                         className='ml-4 md:ml-0'
@@ -107,7 +131,11 @@ const Navbar = () => {
                             <NavigationMenuLink asChild>
                                 <Link
                                     href='/menu'
-                                    className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    className={
+                                        currentPath == '/menu'
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    }
                                     prefetch={false}
                                 >
                                     Menu
@@ -116,7 +144,11 @@ const Navbar = () => {
                             <NavigationMenuLink asChild>
                                 <Link
                                     href='/aanbiedingen'
-                                    className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    className={
+                                        currentPath == '/aanbiedingen'
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    }
                                     prefetch={false}
                                 >
                                     Aanbiedingen{' '}
@@ -125,7 +157,11 @@ const Navbar = () => {
                             <NavigationMenuLink asChild>
                                 <Link
                                     href='/contact'
-                                    className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    className={
+                                        currentPath == '/contact'
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    }
                                     prefetch={false}
                                 >
                                     Contact
@@ -137,7 +173,16 @@ const Navbar = () => {
 
                 <div className='ml-auto hidden items-center md:flex'>
                     {/* {!session ? <SignOut /> : <Auth />} */}
-                    {session ? <SignOut /> : <Auth />}
+                    {session ? (
+                        <>
+                            <span className='mr-2'>
+                                Hi, {session.user.user_metadata.first_name}
+                            </span>{' '}
+                            <SignOut />
+                        </>
+                    ) : (
+                        <Auth />
+                    )}
                 </div>
             </header>
         </>
