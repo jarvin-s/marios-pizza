@@ -52,7 +52,7 @@ export const pizzas = [
         description:
             'Een kleurrijke pizza met verse seizoensgroenten, champignons en mozzarella.',
         price: '10,49',
-        imageUrl: '/images/menu/pizza-vegetarian.jpg',
+        imageUrl: '/images/menu/pizza-veggie.jpg',
         vegan: true,
     },
     {

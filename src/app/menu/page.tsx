@@ -16,8 +16,8 @@ const Menu = () => {
 
     return (
         <>
-            <div className='mx-auto min-h-screen max-w-[1920px] p-0 md:p-20'>
-                <div className='mt-8 flex justify-center gap-4'>
+            <div className='mx-auto mt-10 min-h-screen max-w-[1920px] p-0 pb-20 md:px-20'>
+                <div className='flex justify-center gap-4'>
                     <Button
                         onClick={() => setActiveFilter('all')}
                         className={`rounded-lg px-4 py-2 ${
