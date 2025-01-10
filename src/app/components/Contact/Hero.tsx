@@ -15,20 +15,7 @@ const Hero = () => {
                     </p>
                     <Form />
                 </div>
-                <div className='relative mt-20 flex flex-col items-center gap-10 md:mt-0 px-4'>
-                    <svg
-                        className='hidden md:block'
-                        viewBox='0 0 618 120'
-                        fill='none'
-                        xmlns='http://www.w3.org/2000/svg'
-                    >
-                        <path
-                            d='M1 22.2191C65.2742 -1.03649 214.747 -23.5279 298.444 72.5507C382.141 168.629 545.688 90.3245 617 39.1623'
-                            stroke='#D23D2D'
-                            strokeWidth='3'
-                            strokeLinejoin='round'
-                        />
-                    </svg>
+                <div className='relative mt-20 flex flex-col items-center gap-10 px-4 md:mt-0'>
                     <Image
                         src='/images/contact/pizza-hero.jpg'
                         alt='pizza-hero'
