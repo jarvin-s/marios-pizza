@@ -8,7 +8,7 @@ import instagram from '@/../public/images/footer/social-icons/instagram.svg'
 
 const Footer = () => {
     return (
-        <footer className='border-t-[1px] border-zinc-900/40 bg-[#f8eec8]'>
+        <footer className='border-t-[1px] border-[#49494923] bg-[#f8eec8]'>
             <div className='mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24'>
                 <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
                     <section>
@@ -111,7 +111,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className='mt-12 border-t border-zinc-900/40 pt-6'>
+                <div className='mt-12 border-t border-[#49494923] pt-6'>
                     <div className='text-center sm:flex sm:flex-row-reverse sm:justify-between sm:text-left'>
                         <p className='space-x-1 text-sm text-[#d23d2d]'>
                             <span className='block sm:inline'>

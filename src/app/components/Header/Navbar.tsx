@@ -34,7 +34,7 @@ const Navbar = () => {
 
     return (
         <>
-            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange backdrop-blur-md md:justify-center'>
+            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange backdrop-blur-md md:justify-center shadow-md'>
                 <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button

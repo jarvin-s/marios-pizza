@@ -17,7 +17,7 @@ const Location = () => {
         <>
             <div className='mx-auto mt-40 flex max-w-[1400px] flex-col justify-between px-4 pb-80 md:mt-20'>
                 <h1 className='text-center text-6xl font-bold'>
-                    Onze locaties
+                    Onze vestigingen
                 </h1>
                 <div className='mx-auto mt-10 flex max-w-sm flex-col gap-4'>
                     <Button
@@ -61,7 +61,7 @@ const Location = () => {
                             height={600}
                             width='100%'
                             mode='place'
-                            q="'s Hertogenbosch,Avans Hogeschool"
+                            q="'s Hertogenbosch,Fontys Hogeschool"
                         />
                     </div>
                 </div>
