@@ -23,6 +23,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
+            <head>
+                <meta name='theme-color' content='#f8eec8' />
+            </head>
             <body className={`${poppins.className} antialiased`}>
                 <Providers>
                     <Navbar />
