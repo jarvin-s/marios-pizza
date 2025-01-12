@@ -34,7 +34,7 @@ const Navbar = () => {
 
     return (
         <>
-            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange backdrop-blur-md md:justify-center shadow-md'>
+            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange shadow-md backdrop-blur-md md:justify-center'>
                 <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button
@@ -109,7 +109,17 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className='mt-6 flex items-end justify-center'>
-                            {session ? <SignOut /> : <Auth />}
+                            {session ? (
+                                <SignOut />
+                            ) : (
+                                <Link href='/sign-in'>
+                                    <Button
+                                        className={`${anton.className} bg-[#d23d2d] text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                                    >
+                                        Inloggen
+                                    </Button>
+                                </Link>
+                            )}
                         </div>
                     </SheetContent>
                 </Sheet>
@@ -181,7 +191,13 @@ const Navbar = () => {
                             <SignOut />
                         </>
                     ) : (
-                        <Auth />
+                        <Link href='/sign-in'>
+                            <Button
+                                className={`${anton.className} bg-[#d23d2d] text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                            >
+                                Inloggen
+                            </Button>
+                        </Link>
                     )}
                 </div>
             </header>

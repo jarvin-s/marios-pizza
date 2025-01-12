@@ -120,7 +120,7 @@ const Footer = () => {
 
                             <Link
                                 className='inline-block text-[#d23d2d] underline transition hover:text-[#d23d2d]/75'
-                                href='/'
+                                href='/terms-and-conditions'
                             >
                                 Algemene voorwaarden
                             </Link>

@@ -42,7 +42,7 @@ const Menu = () => {
                         onClick={() => setActiveFilter('veggie')}
                         className={`rounded-lg px-4 py-2 ${
                             activeFilter === 'veggie'
-                                ? 'bg-green-500 text-white hover:bg-green-600'
+                                ? 'bg-[#008c45] text-white hover:bg-[##2ca86a]'
                                 : 'bg-gray-300 text-black hover:bg-gray-400'
                         }`}
                     >
