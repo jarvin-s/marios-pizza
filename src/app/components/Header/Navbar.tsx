@@ -1,10 +1,12 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Sheet,
     SheetTrigger,
     SheetContent,
     SheetTitle,
+    SheetHeader,
+    SheetDescription,
 } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -17,9 +19,9 @@ import { Anton } from 'next/font/google'
 import SignOut from '../Auth/SignOut'
 import Image from 'next/image'
 import logo from '../../../../public/logo.svg'
-import Auth from '../Auth/Auth'
 import useSession from '@/app/hooks/useSession'
 import { usePathname } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
 
 const anton = Anton({
     weight: '400',
@@ -30,8 +32,14 @@ const anton = Anton({
 const Navbar = () => {
     const session = useSession()
     const currentPath = usePathname()
+    const currentLocale = useLocale()
+    const [selectedLocale, setSelectedLocale] = useState(currentLocale)
     const [open, setOpen] = useState(false)
+    useEffect(() => {
+        setSelectedLocale(currentLocale)
+    }, [currentLocale])
 
+    const t = useTranslations('nav')
     return (
         <>
             <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange shadow-md backdrop-blur-md md:justify-center'>
@@ -51,6 +59,12 @@ const Navbar = () => {
                         className={`${anton.className} z-[999] bg-primary-cream uppercase text-primary-orange`}
                         side='left'
                     >
+                        <SheetHeader>
+                            <SheetDescription hidden>
+                                {' '}
+                                Mario&apos;s Pizza
+                            </SheetDescription>
+                        </SheetHeader>
                         <SheetTitle className='hidden'>
                             Mario&apos;s Pizza
                         </SheetTitle>
@@ -58,6 +72,7 @@ const Navbar = () => {
                             className='flex justify-center'
                             href='/'
                             prefetch={false}
+                            onClick={() => setOpen(false)}
                         >
                             <Image
                                 className='ml-4 md:ml-0'
@@ -84,7 +99,7 @@ const Navbar = () => {
                         </div>
                         <div className='grid gap-2 py-6'>
                             <Link
-                                href='/menu'
+                                href={`/${selectedLocale}/menu`}
                                 className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
                                 onClick={() => setOpen(false)}
@@ -92,15 +107,15 @@ const Navbar = () => {
                                 Menu
                             </Link>
                             <Link
-                                href='/aanbiedingen'
+                                href={`/${selectedLocale}/aanbiedingen`}
                                 className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
                                 onClick={() => setOpen(false)}
                             >
-                                Aanbiedingen
+                                {t('aanbiedingen')}
                             </Link>
                             <Link
-                                href='/contact'
+                                href={`/${selectedLocale}/contact`}
                                 className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
                                 onClick={() => setOpen(false)}
@@ -112,11 +127,14 @@ const Navbar = () => {
                             {session ? (
                                 <SignOut />
                             ) : (
-                                <Link href='/sign-in'>
+                                <Link
+                                    href={`/${selectedLocale}/sign-in`}
+                                    onClick={() => setOpen(false)}
+                                >
                                     <Button
                                         className={`${anton.className} bg-[#d23d2d] text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
                                     >
-                                        Inloggen
+                                        {t('sign-in')}
                                     </Button>
                                 </Link>
                             )}
@@ -140,7 +158,7 @@ const Navbar = () => {
                         >
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/menu'
+                                    href={`/${selectedLocale}/menu`}
                                     className={
                                         currentPath == '/menu'
                                             ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
@@ -153,7 +171,7 @@ const Navbar = () => {
                             </NavigationMenuLink>
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/aanbiedingen'
+                                    href={`/${selectedLocale}/aanbiedingen`}
                                     className={
                                         currentPath == '/aanbiedingen'
                                             ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
@@ -161,12 +179,12 @@ const Navbar = () => {
                                     }
                                     prefetch={false}
                                 >
-                                    Aanbiedingen{' '}
+                                    {t('aanbiedingen')}
                                 </Link>
                             </NavigationMenuLink>
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/contact'
+                                    href={`/${selectedLocale}/contact`}
                                     className={
                                         currentPath == '/contact'
                                             ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
@@ -191,11 +209,11 @@ const Navbar = () => {
                             <SignOut />
                         </>
                     ) : (
-                        <Link href='/sign-in'>
+                        <Link href={`/${selectedLocale}/sign-in`}>
                             <Button
                                 className={`${anton.className} bg-[#d23d2d] text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
                             >
-                                Inloggen
+                                {t('sign-in')}
                             </Button>
                         </Link>
                     )}

@@ -5,8 +5,10 @@ import logo from '@/../public/logo.svg'
 import facebook from '@/../public/images/footer/social-icons/facebook.svg'
 import tiktok from '@/../public/images/footer/social-icons/tiktok.svg'
 import instagram from '@/../public/images/footer/social-icons/instagram.svg'
+import { useTranslations } from 'next-intl'
 
 const Footer = () => {
+    const t = useTranslations('footer')
     return (
         <footer className='border-t-[1px] border-[#49494923] bg-[#f8eec8]'>
             <div className='mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24'>
@@ -22,44 +24,41 @@ const Footer = () => {
                         </div>
 
                         <p className='mx-auto mt-6 max-w-md text-center sm:mx-0 sm:max-w-xs sm:text-left'>
-                            Bij Mario&apos;s Pizza brengen we de smaak van
-                            Italië naar je bord! Vers bereide pizza&apos;s,
-                            authentieke ingrediënten en een passie voor
-                            kwaliteit.
+                            {t('description')}
                         </p>
                     </section>
 
                     <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:col-span-2'>
                         <div className='flex flex-col gap-2'>
                             <p className='font-bold text-[#d23d2d]'>
-                                Openingstijden
+                                {t('openingstijden')}
                             </p>
                             <p className='flex justify-between'>
-                                <span>maandag:</span>
+                                <span>{t('maandag')}</span>
                                 <span>13:00 - 22:00</span>
                             </p>
                             <p className='flex justify-between'>
-                                <span>dinsdag:</span>
+                                <span>{t('dinsdag')}</span>
                                 <span>13:00 - 22:00</span>
                             </p>
                             <p className='flex justify-between'>
-                                <span>woensdag:</span>
+                                <span>{t('woensdag')}</span>
                                 <span>13:00 - 22:00</span>
                             </p>
                             <p className='flex justify-between gap-10 md:gap-0'>
-                                <span>donderdag:</span>
+                                <span>{t('donderdag')}</span>
                                 <span>13:00 - 22:00</span>
                             </p>
                             <p className='flex justify-between'>
-                                <span>vrijdag:</span>
+                                <span>{t('vrijdag')}</span>
                                 <span>13:00 - 22:00</span>
                             </p>
                             <p className='flex justify-between'>
-                                <span>zaterdag:</span>
+                                <span>{t('zaterdag')}</span>
                                 <span>17:00 - 23:00</span>
                             </p>
                             <p className='flex justify-between'>
-                                <span>zondag:</span>
+                                <span>{t('zondag')}</span>
                                 <span>17:00 - 22:00</span>
                             </p>
                         </div>
@@ -115,14 +114,14 @@ const Footer = () => {
                     <div className='text-center sm:flex sm:flex-row-reverse sm:justify-between sm:text-left'>
                         <p className='space-x-1 text-sm text-[#d23d2d]'>
                             <span className='block sm:inline'>
-                                Alle rechten voorbehouden.
+                                {t('rechten')}
                             </span>
 
                             <Link
                                 className='inline-block text-[#d23d2d] underline transition hover:text-[#d23d2d]/75'
                                 href='/terms-and-conditions'
                             >
-                                Algemene voorwaarden
+                                {t('tos')}
                             </Link>
 
                             <span>&middot;</span>

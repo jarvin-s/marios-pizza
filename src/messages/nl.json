@@ -1,0 +1,23 @@
+{
+    "home": {
+        "button": "Bezorgen",
+        "button2": "Afhalen"
+    },
+    "nav": {
+        "aanbiedingen": "Aanbiedingen",
+        "sign-in": "Inloggen"
+    },
+    "footer": {
+        "description": "Bij Mario's Pizza brengen we de smaak van Italië naar je bord! Vers bereide pizza&apos;s, authentieke ingrediënten en een passie voorkwaliteit.",
+        "openingstijden": "Openingstijden",
+        "maandag": "maandag:",
+        "dinsdag": "dinsdag:",
+        "woensdag": "woensdag:",
+        "donderdag": "donderdag:",
+        "vrijdag": "vrijdag:",
+        "zaterdag": "zaterdag:",
+        "zondag": "zondag:",
+        "rechten": "Alle rechten voorbehouden.",
+        "tos": "Algemene voorwaarden"
+    }
+}

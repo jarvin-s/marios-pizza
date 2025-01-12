@@ -1,4 +1,5 @@
-import Hero from './components/Home/Hero'
+'use client'
+import Hero from '../components/Home/Hero'
 
 const Home = () => {
     return (

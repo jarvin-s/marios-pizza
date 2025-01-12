@@ -1,0 +1,23 @@
+{
+    "home": {
+        "button": "Delivery",
+        "button2": "Pickup"
+    },
+    "nav": {
+        "aanbiedingen": "Deals",
+        "sign-in": "Sign in"
+    },
+    "footer": {
+        "description": "At Mario's Pizza, we bring the taste of Italy to your plate! Freshly prepared pizzas, authentic ingredients, and a passion for quality.",
+        "openingstijden": "Opening hours",
+        "maandag": "Monday:",
+        "dinsdag": "Tuesday:",
+        "woensdag": "Wednesday:",
+        "donderdag": "Thursday:",
+        "vrijdag": "Friday:",
+        "zaterdag": "Saturday:",
+        "zondag": "Sunday:",
+        "rechten": "All rights reserved.",
+        "tos": "Terms and conditions"
+    }
+}
