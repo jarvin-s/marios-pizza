@@ -80,7 +80,7 @@ export default function SignUpPage() {
                 >
                     <div className='flex gap-4'>
                         <div className='flex-1 space-y-2'>
-                            <Label htmlFor='firstName' className='text-right'>
+                            <Label htmlFor='firstName'>
                                 {t('first-name')}
                             </Label>
                             <Input
@@ -92,7 +92,7 @@ export default function SignUpPage() {
                             />
                         </div>
                         <div className='flex-1 space-y-2'>
-                            <Label htmlFor='lastName' className='text-right'>
+                            <Label htmlFor='lastName'>
                                 {t('last-name')}
                             </Label>
                             <Input
@@ -106,7 +106,7 @@ export default function SignUpPage() {
                     </div>
 
                     <div className='space-y-2'>
-                        <Label htmlFor='email' className='text-right'>
+                        <Label htmlFor='email'>
                             {t('email')}
                         </Label>
                         <Input
@@ -119,7 +119,7 @@ export default function SignUpPage() {
                     </div>
 
                     <div className='space-y-2'>
-                        <Label htmlFor='password' className='text-right'>
+                        <Label htmlFor='password'>
                             {t('password')}
                         </Label>
                         <Input
@@ -156,19 +156,19 @@ export default function SignUpPage() {
                     >
                         {t('button')}
                     </Button>
-                </form>
 
-                <div className='mt-4 text-center'>
-                    <p>
-                        {t('account')}
-                        <Link
-                            href={`/${selectedLocale}/sign-in`}
-                            className='pl-2 text-[#0090e3] hover:underline'
-                        >
-                            {t('login')}
-                        </Link>
-                    </p>
-                </div>
+                    <div className='pt-4 text-center'>
+                        <p>
+                            {t('account')}
+                            <Link
+                                href={`/${selectedLocale}/sign-in`}
+                                className='pl-2 text-[#0090e3] hover:underline'
+                            >
+                                {t('login')}
+                            </Link>
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
     )

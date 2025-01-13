@@ -56,7 +56,7 @@ export default function SignInPage() {
                     onSubmit={handleSubmit}
                 >
                     <div className='space-y-2'>
-                        <Label htmlFor='email' className='text-right'>
+                        <Label htmlFor='email'>
                             {t('email')}
                         </Label>
                         <Input
@@ -68,7 +68,7 @@ export default function SignInPage() {
                         />
                     </div>
                     <div className='space-y-2'>
-                        <Label htmlFor='password' className='text-right'>
+                        <Label htmlFor='password'>
                             {t('password')}
                         </Label>
                         <Input
@@ -105,19 +105,19 @@ export default function SignInPage() {
                     >
                         {t('button')}
                     </Button>
-                </form>
 
-                <div className='mt-4 text-center'>
-                    <p>
-                        {t('account')}
-                        <Link
-                            href={`/${selectedLocale}/sign-up`}
-                            className='pl-2 text-[#0090e3] hover:underline'
-                        >
-                            {t('register')}
-                        </Link>
-                    </p>
-                </div>
+                    <div className='pt-4 text-center'>
+                        <p>
+                            {t('account')}
+                            <Link
+                                href={`/${selectedLocale}/sign-up`}
+                                className='pl-2 text-[#0090e3] hover:underline'
+                            >
+                                {t('register')}
+                            </Link>
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
     )
