@@ -3,6 +3,47 @@
         "button": "Delivery",
         "button2": "Pickup"
     },
+    "menu": {
+        "all-button": "All",
+        "meat-button": "Meat",
+        "vegetarian-button": "Vegetarian",
+        "add-button": "Add",
+        "pizzas": {
+            "pizza-salami": "Richly topped with the best ingredients and delicious slices of spicy salami.",
+            "pizza-margherita": "The classic pizza with tomato sauce, mozzarella, and basil.",
+            "pizza-hawaii": "A delicious combination of juicy pineapple, ham, and melted cheese on a crispy base.",
+            "pizza-chicken": "A tasty pizza topped with tender chicken pieces, fresh vegetables, and creamy mozzarella.",
+            "pizza-pepperoni": "A classic pizza with a generous amount of pepperoni and melted cheese.",
+            "pizza-bbq-chicken": "A delicious combination of grilled chicken, BBQ sauce, red onion, and mozzarella.",
+            "pizza-veggie": "A pizza with a creamy base, a rich tomato sauce, and a variety of fresh vegetables.",
+            "pizza-quattro-formaggi": "A rich combination of four different cheeses: mozzarella, gorgonzola, pecorino, and parmesan.",
+            "pizza-spicy-meat": "A fiery pizza with spicy salami, pepperoni, jalapeños, and seasoned ground meat.",
+            "pizza-truffel": "A delicious pizza with truffle oil, fresh mushrooms, and mozzarella."
+        }
+    },
+    "aanbiedingen": {
+        "button": "Check out our  current deals"
+    },
+    "sign-in": {
+        "title": "Sign in",
+        "email": "Email",
+        "password": "Password",
+        "button": "Sign in",
+        "account": "Don't have an account?",
+        "register": "Register now",
+        "error": "The combination of email address and password is not valid."
+    },
+    "sign-up": {
+        "title": "Create an account",
+        "first-name": "First name",
+        "last-name": "Last name",
+        "email": "Email",
+        "password": "Password",
+        "button": "Register",
+        "account": "Already have an account?",
+        "login": "Log in here",
+        "error": "Something went wrong, please re-enter your details."
+    },
     "nav": {
         "aanbiedingen": "Deals",
         "sign-in": "Sign in"
@@ -18,6 +59,72 @@
         "zaterdag": "Saturday:",
         "zondag": "Sunday:",
         "rechten": "All rights reserved.",
-        "tos": "Terms and conditions"
+        "tos": "Terms and conditions",
+        "links": {
+            "title": "Quick links",
+            "aanbiedingen": "Deals"
+        }
+    },
+    "contact": {
+        "hulp": "Need help?",
+        "hulp-banner": "We are here for you!",
+        "form": {
+            "voornaam": "First name",
+            "achternaam": "Last name",
+            "telefoon": "Phone number",
+            "email": "E-mail address",
+            "bericht": "Message",
+            "uw-bericht": "Your message",
+            "verzenden": "Send"
+        },
+        "vestigingen": {
+            "titel": "Our locations"
+        }
+    },
+    "tos": {
+        "title": "Terms and conditions",
+        "sections": [
+            {
+                "title": "1. General",
+                "content": "These terms and conditions apply to all services and offers from Mario's Pizza. By using our services, you agree to these terms."
+            },
+            {
+                "title": "2. Services",
+                "content": "We strive to provide our services to the best of our ability. We reserve the right to make changes to our services without prior notice."
+            },
+            {
+                "title": "3. Terms of Use",
+                "content": [
+                    "You must be at least 18 years old to use our services.",
+                    "You are responsible for keeping your account details confidential.",
+                    "It is not permitted to use our services for illegal purposes."
+                ]
+            },
+            {
+                "title": "4. Privacy and Data Protection",
+                "content": "We take the protection of your personal data very seriously. For more information, please refer to our privacy policy."
+            },
+            {
+                "title": "5. Intellectual Property",
+                "content": "All content on this website, including but not limited to texts, images, and logos, is owned by Mario's Pizza and is protected by intellectual property rights."
+            },
+            {
+                "title": "6. Liability",
+                "content": "We are not liable for any damage resulting from the use of our services, unless there is intentional misconduct or gross negligence on our part."
+            },
+            {
+                "title": "7. Changes",
+                "content": "We reserve the right to modify these terms and conditions at any time. Changes will be published on our website."
+            },
+            {
+                "title": "8. Contact",
+                "content": [
+                    "If you have questions about these terms and conditions, please contact us at:\nEmail: info@mariospizza.nl",
+                    "Phone: 06 12345678",
+                    "Address: Rachelsmolen 1, 5612 MA Eindhoven"
+                ]
+            }
+        ],
+        "last-update": "Last update: "
     }
 }

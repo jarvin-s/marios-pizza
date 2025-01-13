@@ -1,14 +1,20 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '@/../public/logo.svg'
 import facebook from '@/../public/images/footer/social-icons/facebook.svg'
 import tiktok from '@/../public/images/footer/social-icons/tiktok.svg'
 import instagram from '@/../public/images/footer/social-icons/instagram.svg'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 const Footer = () => {
     const t = useTranslations('footer')
+    const currentLocale = useLocale()
+    const [selectedLocale, setSelectedLocale] = useState(currentLocale)
+    useEffect(() => {
+        setSelectedLocale(currentLocale)
+    }, [currentLocale])
     return (
         <footer className='border-t-[1px] border-[#49494923] bg-[#f8eec8]'>
             <div className='mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24'>
@@ -29,41 +35,8 @@ const Footer = () => {
                     </section>
 
                     <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:col-span-2'>
-                        <div className='flex flex-col gap-2'>
-                            <p className='font-bold text-[#d23d2d]'>
-                                {t('openingstijden')}
-                            </p>
-                            <p className='flex justify-between'>
-                                <span>{t('maandag')}</span>
-                                <span>13:00 - 22:00</span>
-                            </p>
-                            <p className='flex justify-between'>
-                                <span>{t('dinsdag')}</span>
-                                <span>13:00 - 22:00</span>
-                            </p>
-                            <p className='flex justify-between'>
-                                <span>{t('woensdag')}</span>
-                                <span>13:00 - 22:00</span>
-                            </p>
-                            <p className='flex justify-between gap-10 md:gap-0'>
-                                <span>{t('donderdag')}</span>
-                                <span>13:00 - 22:00</span>
-                            </p>
-                            <p className='flex justify-between'>
-                                <span>{t('vrijdag')}</span>
-                                <span>13:00 - 22:00</span>
-                            </p>
-                            <p className='flex justify-between'>
-                                <span>{t('zaterdag')}</span>
-                                <span>17:00 - 23:00</span>
-                            </p>
-                            <p className='flex justify-between'>
-                                <span>{t('zondag')}</span>
-                                <span>17:00 - 22:00</span>
-                            </p>
-                        </div>
-
-                        <div className='flex flex-col gap-2 text-[#d23d2d]'>
+                        {/* Socials */}
+                        {/* <div className='flex flex-col gap-2 text-[#d23d2d]'>
                             <p className='font-bold'>Socials</p>
                             <div className='flex gap-4'>
                                 <a
@@ -106,6 +79,72 @@ const Footer = () => {
                                     />
                                 </a>
                             </div>
+                        </div> */}
+
+                        <div className='flex flex-col gap-2'>
+                            <p className='font-bold text-[#d23d2d]'>
+                                {t('links.title')}
+                            </p>
+                            <div className='flex flex-col gap-4 text-sm'>
+                                <a
+                                    href={`/${selectedLocale}/`}
+                                    className='transition-opacity hover:opacity-80'
+                                >
+                                    Home
+                                </a>
+                                <a
+                                    href={`/${selectedLocale}/menu`}
+                                    className='transition-opacity hover:opacity-80'
+                                >
+                                    Menu
+                                </a>
+                                <a
+                                    href={`/${selectedLocale}/aanbiedingen`}
+                                    className='transition-opacity hover:opacity-80'
+                                >
+                                    {t('links.aanbiedingen')}
+                                </a>
+                                <a
+                                    href={`/${selectedLocale}/contact`}
+                                    className='transition-opacity hover:opacity-80'
+                                >
+                                    Contact
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className='flex flex-col gap-2'>
+                            <p className='font-bold text-[#d23d2d]'>
+                                {t('openingstijden')}
+                            </p>
+                            <p className='flex justify-between'>
+                                <span>{t('maandag')}</span>
+                                <span>13:00 - 22:00</span>
+                            </p>
+                            <p className='flex justify-between'>
+                                <span>{t('dinsdag')}</span>
+                                <span>13:00 - 22:00</span>
+                            </p>
+                            <p className='flex justify-between'>
+                                <span>{t('woensdag')}</span>
+                                <span>13:00 - 22:00</span>
+                            </p>
+                            <p className='flex justify-between gap-10 md:gap-0'>
+                                <span>{t('donderdag')}</span>
+                                <span>13:00 - 22:00</span>
+                            </p>
+                            <p className='flex justify-between'>
+                                <span>{t('vrijdag')}</span>
+                                <span>13:00 - 22:00</span>
+                            </p>
+                            <p className='flex justify-between'>
+                                <span>{t('zaterdag')}</span>
+                                <span>17:00 - 23:00</span>
+                            </p>
+                            <p className='flex justify-between'>
+                                <span>{t('zondag')}</span>
+                                <span>17:00 - 22:00</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +158,7 @@ const Footer = () => {
 
                             <Link
                                 className='inline-block text-[#d23d2d] underline transition hover:text-[#d23d2d]/75'
-                                href='/terms-and-conditions'
+                                href={`/${selectedLocale}/terms-and-conditions`}
                             >
                                 {t('tos')}
                             </Link>

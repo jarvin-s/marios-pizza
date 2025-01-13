@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import React from 'react'
 import { Anton } from 'next/font/google'
+import { useTranslations } from 'next-intl'
 
 const anton = Anton({
     weight: '400',
@@ -9,6 +10,7 @@ const anton = Anton({
 })
 
 const Hero = () => {
+    const t = useTranslations('aanbiedingen')
     return (
         <>
             <div className='relative h-[75vh] w-full overflow-hidden'>
@@ -37,7 +39,7 @@ const Hero = () => {
                             variant={'default'}
                             className='bg-[#d23d2d] py-4 text-sm duration-0 hover:bg-[#d66356] md:py-7 md:text-2xl'
                         >
-                            Bekijk onze aanbiedingen
+                            {t('button')}
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 width='24'

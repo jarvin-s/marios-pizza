@@ -23,12 +23,12 @@ import useSession from '@/app/hooks/useSession'
 import { usePathname } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import LanguageSwitcher from '../LanguageSwitcher'
+import SheetLanguageSwitcher from '../SheetLanguageSwitcher'
 
 const anton = Anton({
     weight: '400',
     subsets: ['latin'],
 })
-// Active pagina toevoegen (nav)
 
 const Navbar = () => {
     const session = useSession()
@@ -124,7 +124,8 @@ const Navbar = () => {
                                 Contact
                             </Link>
                         </div>
-                        <div className='mt-6 flex items-end justify-center'>
+                        <div className='mt-6 flex items-end justify-center gap-2'>
+                            <SheetLanguageSwitcher />
                             {session ? (
                                 <SignOut />
                             ) : (
@@ -196,12 +197,12 @@ const Navbar = () => {
                                     Contact
                                 </Link>
                             </NavigationMenuLink>
-                            <LanguageSwitcher />
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
 
-                <div className='ml-auto hidden items-center md:flex'>
+                <div className='ml-auto hidden items-center gap-2 md:flex'>
+                    <LanguageSwitcher />
                     {/* {!session ? <SignOut /> : <Auth />} */}
                     {session ? (
                         <>
@@ -247,72 +248,3 @@ function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
         </svg>
     )
 }
-
-// 'use client'
-
-// import { useState } from 'react'
-
-// const Navbar = () => {
-//     const [overlayStyle, setOverlayStyle] = useState({
-//         left: 0,
-//         top: 0,
-//         width: 0,
-//         height: 0,
-//         opacity: 0,
-//     })
-
-//     const handleMouseOver = (e: React.MouseEvent<HTMLLIElement>) => {
-//         const rect = e.currentTarget.getBoundingClientRect()
-//         setOverlayStyle({
-//             left: rect.x,
-//             top: rect.y + window.scrollY,
-//             width: rect.width,
-//             height: rect.height,
-//             opacity: 1,
-//         })
-//     }
-
-//     const handleMouseOut = () => {
-//         setOverlayStyle((prev) => ({ ...prev, opacity: 0 }))
-//     }
-
-//     const navItems = ['Home', 'About', 'Contact', 'Shop', 'Portfolio / Works']
-
-//     return (
-//         <header className='relative mt-4 flex items-center justify-center'>
-//             <div className='relative'>
-//                 {/* Hover Overlay */}
-//                 <div
-//                     className='absolute z-0 rounded-md bg-red-500 transition-all duration-300'
-//                     style={{
-//                         left: `${overlayStyle.left}px`,
-//                         top: `${overlayStyle.top}px`,
-//                         width: `${overlayStyle.width}px`,
-//                         height: `${overlayStyle.height}px`,
-//                         opacity: overlayStyle.opacity,
-//                     }}
-//                 ></div>
-//                 {/* Navigation Items */}
-//                 <ul className='relative z-10 flex items-center justify-center space-x-4'>
-//                     {navItems.map((item) => (
-//                         <li
-//                             key={item}
-//                             onMouseOver={handleMouseOver}
-//                             onMouseOut={handleMouseOut}
-//                             className='relative cursor-pointer list-none px-4 py-2 text-lg font-semibold text-black'
-//                         >
-//                             <a
-//                                 href='#'
-//                                 className='text-black transition hover:text-gray-600'
-//                             >
-//                                 {item}
-//                             </a>
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         </header>
-//     )
-// }
-
-// export default Navbar

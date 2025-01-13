@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { GoogleMapsEmbed } from '@next/third-parties/google'
 import { Button } from '@/components/ui/button'
 import { Anton } from 'next/font/google'
+import { useTranslations } from 'next-intl'
 
 const anton = Anton({
     subsets: ['latin'],
@@ -12,13 +13,12 @@ const anton = Anton({
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string
 const Location = () => {
     const [selectedLocation, setSelectedLocation] = useState('eindhoven')
+    const t = useTranslations('contact.vestigingen')
 
     return (
         <>
             <div className='mx-auto mt-40 flex max-w-[1400px] flex-col justify-between px-4 pb-80 md:mt-20'>
-                <h1 className='text-center text-6xl font-bold'>
-                    Onze vestigingen
-                </h1>
+                <h1 className='text-center text-6xl font-bold'>{t('titel')}</h1>
                 <div className='mx-auto mt-10 flex max-w-sm flex-col gap-4'>
                     <Button
                         size='lg'

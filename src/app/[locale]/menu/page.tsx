@@ -4,15 +4,18 @@ import React, { useState } from 'react'
 import PizzaCard from '../../components/Menu/PizzaCard'
 import { pizzas } from '../../data/pizzaData'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
 const Menu = () => {
     const [activeFilter, setActiveFilter] = useState('all')
 
-    const filteredPizzas = pizzas.filter((pizza) => {
+    const filteredPizzas = pizzas().filter((pizza) => {
         if (activeFilter === 'all') return true
         if (activeFilter === 'meat') return !pizza.vegan
         return pizza.vegan
     })
+
+    const t = useTranslations('menu')
 
     return (
         <>
@@ -26,7 +29,7 @@ const Menu = () => {
                                 : 'bg-gray-300 text-black hover:bg-gray-400'
                         }`}
                     >
-                        Alle
+                        {t('all-button')}
                     </Button>
                     <Button
                         onClick={() => setActiveFilter('meat')}
@@ -36,7 +39,7 @@ const Menu = () => {
                                 : 'bg-gray-300 text-black hover:bg-gray-400'
                         }`}
                     >
-                        Vlees
+                        {t('meat-button')}
                     </Button>
                     <Button
                         onClick={() => setActiveFilter('veggie')}
@@ -46,7 +49,7 @@ const Menu = () => {
                                 : 'bg-gray-300 text-black hover:bg-gray-400'
                         }`}
                     >
-                        Vegetarisch
+                        {t('vegetarian-button')}
                     </Button>
                 </div>
 

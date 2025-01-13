@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -8,6 +8,7 @@ import { Anton } from 'next/font/google'
 import { supabase } from '@/app/lib/supaBaseClient'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
 
 const anton = Anton({
     weight: '400',
@@ -21,6 +22,14 @@ export default function SignUpPage() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const router = useRouter()
+
+    const currentLocale = useLocale()
+    const [selectedLocale, setSelectedLocale] = useState(currentLocale)
+    useEffect(() => {
+        setSelectedLocale(currentLocale)
+    }, [currentLocale])
+
+    const t = useTranslations('sign-up')
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -48,7 +57,7 @@ export default function SignUpPage() {
             password,
         })
 
-        if (error) {    
+        if (error) {
             setError(error.message)
         } else {
             router.push('/')
@@ -57,12 +66,12 @@ export default function SignUpPage() {
     }
 
     return (
-        <div className='flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8'>
+        <div className='flex justify-center bg-gray-50 px-4 py-32 pb-[25rem] sm:px-6 lg:px-8'>
             <div className='w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-md'>
                 <h2
                     className={`${anton.className} text-center text-3xl text-gray-900`}
                 >
-                    Registreren
+                    {t('title')}
                 </h2>
 
                 <form
@@ -72,24 +81,24 @@ export default function SignUpPage() {
                     <div className='flex gap-4'>
                         <div className='flex-1 space-y-2'>
                             <Label htmlFor='firstName' className='text-right'>
-                                Voornaam
+                                {t('first-name')}
                             </Label>
                             <Input
                                 id='firstName'
                                 type='text'
-                                placeholder='Voornaam'
+                                placeholder={t('first-name')}
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
                         </div>
                         <div className='flex-1 space-y-2'>
                             <Label htmlFor='lastName' className='text-right'>
-                                Achternaam
+                                {t('last-name')}
                             </Label>
                             <Input
                                 id='lastName'
                                 type='text'
-                                placeholder='Achternaam'
+                                placeholder={t('last-name')}
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
                             />
@@ -98,12 +107,12 @@ export default function SignUpPage() {
 
                     <div className='space-y-2'>
                         <Label htmlFor='email' className='text-right'>
-                            E-mailadres
+                            {t('email')}
                         </Label>
                         <Input
                             id='email'
                             type='email'
-                            placeholder='E-mailadres'
+                            placeholder={t('email')}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -111,12 +120,12 @@ export default function SignUpPage() {
 
                     <div className='space-y-2'>
                         <Label htmlFor='password' className='text-right'>
-                            Wachtwoord
+                            {t('password')}
                         </Label>
                         <Input
                             id='password'
                             type='password'
-                            placeholder='Wachtwoord'
+                            placeholder={t('password')}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -136,7 +145,7 @@ export default function SignUpPage() {
                                         d='M12 17q.425 0 .713-.288T13 16t-.288-.712T12 15t-.712.288T11 16t.288.713T12 17m-1-4h2V7h-2zm1 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22'
                                     />
                                 </svg>
-                                {error}
+                                {t('error')}
                             </div>
                         </div>
                     )}
@@ -145,18 +154,18 @@ export default function SignUpPage() {
                         type='submit'
                         className='w-full bg-[#d23d2d] text-white duration-300 hover:bg-[#b93229]'
                     >
-                        Registreer
+                        {t('button')}
                     </Button>
                 </form>
 
                 <div className='mt-4 text-center'>
                     <p>
-                        Al een account?
+                        {t('account')}
                         <Link
-                            href='/sign-in'
+                            href={`/${selectedLocale}/sign-in`}
                             className='pl-2 text-[#0090e3] hover:underline'
                         >
-                            Log hier in
+                            {t('login')}
                         </Link>
                     </p>
                 </div>

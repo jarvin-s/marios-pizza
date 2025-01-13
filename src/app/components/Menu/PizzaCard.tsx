@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Anton } from 'next/font/google'
+import { useTranslations } from 'next-intl'
 
 const anton = Anton({
     subsets: ['latin'],
@@ -22,6 +23,7 @@ const PizzaCard = ({
     imageUrl,
     vegan,
 }: PizzaCardProps) => {
+    const t = useTranslations('menu')
     return (
         <div className='mt-10 w-full overflow-hidden rounded-lg bg-[#f8eecb] px-6 py-8 shadow-lg'>
             <div className='flex flex-col items-center'>
@@ -50,7 +52,7 @@ const PizzaCard = ({
                                 size={'lg'}
                                 className='bg-[#008c45] text-2xl uppercase hover:bg-[#2ca86a]'
                             >
-                                Voeg toe
+                                {t('add-button')}
                             </Button>
                         </a>
                     </div>

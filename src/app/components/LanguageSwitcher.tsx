@@ -7,8 +7,6 @@ import {
     DropdownMenuContent,
     DropdownMenuGroup,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useLocale } from 'next-intl'
@@ -38,7 +36,7 @@ export default function LanguageSwitcher() {
             <DropdownMenuTrigger asChild>
                 <Button
                     variant='default'
-                    className={`${poppins.className} bg-primary-orange text-white duration-300 hover:bg-primary-orange/60`}
+                    className={`${poppins.className} bg-primary-green font-bold text-white duration-300 hover:bg-primary-green/60`}
                 >
                     {selectedLocale === 'nl' ? (
                         <>
@@ -94,15 +92,11 @@ export default function LanguageSwitcher() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-                className={`${poppins.className} w-full rounded-lg bg-primary-orange text-white shadow-md ring-1 ring-black ring-opacity-5`}
+                className={`${poppins.className} w-full rounded-lg border-primary-cream bg-primary-green text-white shadow-md`}
             >
-                <DropdownMenuLabel className='px-4 py-2 font-semibold'>
-                    Languages
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator className='my-2 border-t border-gray-200' />
                 <DropdownMenuGroup>
                     <DropdownMenuItem
-                        className='flex cursor-pointer items-center gap-1 px-4 py-2 hover:bg-primary-orange/60 focus:bg-primary-orange/60 focus:outline-none'
+                        className='flex cursor-pointer items-center gap-1 px-4 py-2 focus:bg-green-500'
                         onSelect={() => changeLocale('nl')}
                     >
                         <svg
@@ -124,7 +118,7 @@ export default function LanguageSwitcher() {
                         <span className='text-white'>Nederlands</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                        className='flex cursor-pointer items-center gap-1 px-4 py-2 hover:bg-primary-orange/60 focus:bg-primary-orange/60 focus:outline-none'
+                        className='flex cursor-pointer items-center gap-1 px-4 py-2 focus:bg-green-500'
                         onSelect={() => changeLocale('en')}
                     >
                         <svg
