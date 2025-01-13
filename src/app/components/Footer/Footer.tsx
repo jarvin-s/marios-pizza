@@ -86,30 +86,30 @@ const Footer = () => {
                                 {t('links.title')}
                             </p>
                             <div className='flex flex-col gap-4 text-sm'>
-                                <a
+                                <Link
                                     href={`/${selectedLocale}/`}
                                     className='transition-opacity hover:opacity-80'
                                 >
                                     Home
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                     href={`/${selectedLocale}/menu`}
                                     className='transition-opacity hover:opacity-80'
                                 >
                                     Menu
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                     href={`/${selectedLocale}/aanbiedingen`}
                                     className='transition-opacity hover:opacity-80'
                                 >
                                     {t('links.aanbiedingen')}
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                     href={`/${selectedLocale}/contact`}
                                     className='transition-opacity hover:opacity-80'
                                 >
                                     Contact
-                                </a>
+                                </Link>
                             </div>
                         </div>
 
