@@ -22,6 +22,7 @@ import logo from '../../../../public/logo.svg'
 import useSession from '@/app/hooks/useSession'
 import { usePathname } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
+import LanguageSwitcher from '../LanguageSwitcher'
 
 const anton = Anton({
     weight: '400',
@@ -195,6 +196,7 @@ const Navbar = () => {
                                     Contact
                                 </Link>
                             </NavigationMenuLink>
+                            <LanguageSwitcher />
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>

@@ -1,0 +1,160 @@
+'use client'
+
+import { useRouter, usePathname } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { useLocale } from 'next-intl'
+import { useEffect, useState } from 'react'
+import { Poppins } from 'next/font/google'
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] })
+
+export default function LanguageSwitcher() {
+    const router = useRouter()
+    const pathname = usePathname()
+    const currentLocale = useLocale()
+    const [selectedLocale, setSelectedLocale] = useState(currentLocale)
+
+    useEffect(() => {
+        setSelectedLocale(currentLocale)
+    }, [currentLocale])
+
+    const changeLocale = (newLocale: string) => {
+        setSelectedLocale(newLocale)
+        const newPathname = `/${newLocale}${pathname.substring(currentLocale.length + 1)}`
+        router.replace(newPathname)
+        router.refresh()
+    }
+
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button
+                    variant='default'
+                    className={`${poppins.className} bg-primary-orange text-white duration-300 hover:bg-primary-orange/60`}
+                >
+                    {selectedLocale === 'nl' ? (
+                        <>
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                width='20'
+                                height='20'
+                                viewBox='0 0 36 36'
+                            >
+                                <path fill='#EEE' d='M0 14h36v8H0z' />
+                                <path
+                                    fill='#AE1F28'
+                                    d='M32 5H4a4 4 0 0 0-4 4v5h36V9a4 4 0 0 0-4-4'
+                                />
+                                <path
+                                    fill='#20478B'
+                                    d='M4 31h28a4 4 0 0 0 4-4v-5H0v5a4 4 0 0 0 4 4'
+                                />
+                            </svg>
+                            <span className='ml-1'>NL</span>
+                        </>
+                    ) : (
+                        <>
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                width='20'
+                                height='20'
+                                viewBox='0 0 640 480'
+                            >
+                                <path fill='#012169' d='M0 0h640v480H0z' />
+                                <path
+                                    fill='#FFF'
+                                    d='m75 0l244 181L562 0h78v62L400 241l240 178v61h-80L320 301L81 480H0v-60l239-178L0 64V0z'
+                                />
+                                <path
+                                    fill='#C8102E'
+                                    d='m424 281l216 159v40L369 281zm-184 20l6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z'
+                                />
+                                <path
+                                    fill='#FFF'
+                                    d='M241 0v480h160V0zM0 160v160h640V160z'
+                                />
+                                <path
+                                    fill='#C8102E'
+                                    d='M0 193v96h640v-96zM273 0v480h96V0z'
+                                />
+                            </svg>
+                            <span className={`${poppins.className} ml-1`}>
+                                EN
+                            </span>
+                        </>
+                    )}
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+                className={`${poppins.className} w-full rounded-lg bg-primary-orange text-white shadow-md ring-1 ring-black ring-opacity-5`}
+            >
+                <DropdownMenuLabel className='px-4 py-2 font-semibold'>
+                    Languages
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator className='my-2 border-t border-gray-200' />
+                <DropdownMenuGroup>
+                    <DropdownMenuItem
+                        className='flex cursor-pointer items-center gap-1 px-4 py-2 hover:bg-primary-orange/60 focus:bg-primary-orange/60 focus:outline-none'
+                        onSelect={() => changeLocale('nl')}
+                    >
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            width='20'
+                            height='20'
+                            viewBox='0 0 36 36'
+                        >
+                            <path fill='#EEE' d='M0 14h36v8H0z' />
+                            <path
+                                fill='#AE1F28'
+                                d='M32 5H4a4 4 0 0 0-4 4v5h36V9a4 4 0 0 0-4-4'
+                            />
+                            <path
+                                fill='#20478B'
+                                d='M4 31h28a4 4 0 0 0 4-4v-5H0v5a4 4 0 0 0 4 4'
+                            />
+                        </svg>
+                        <span className='text-white'>Nederlands</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        className='flex cursor-pointer items-center gap-1 px-4 py-2 hover:bg-primary-orange/60 focus:bg-primary-orange/60 focus:outline-none'
+                        onSelect={() => changeLocale('en')}
+                    >
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            width='20'
+                            height='20'
+                            viewBox='0 0 640 480'
+                        >
+                            <path fill='#012169' d='M0 0h640v480H0z' />
+                            <path
+                                fill='#FFF'
+                                d='m75 0l244 181L562 0h78v62L400 241l240 178v61h-80L320 301L81 480H0v-60l239-178L0 64V0z'
+                            />
+                            <path
+                                fill='#C8102E'
+                                d='m424 281l216 159v40L369 281zm-184 20l6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z'
+                            />
+                            <path
+                                fill='#FFF'
+                                d='M241 0v480h160V0zM0 160v160h640V160z'
+                            />
+                            <path
+                                fill='#C8102E'
+                                d='M0 193v96h640v-96zM273 0v480h96V0z'
+                            />
+                        </svg>
+                        <span className='text-white'>English</span>
+                    </DropdownMenuItem>
+                </DropdownMenuGroup>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
+}
