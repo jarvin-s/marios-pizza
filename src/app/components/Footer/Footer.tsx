@@ -3,9 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import logo from '@/../public/logo.svg'
-import facebook from '@/../public/images/footer/social-icons/facebook.svg'
-import tiktok from '@/../public/images/footer/social-icons/tiktok.svg'
-import instagram from '@/../public/images/footer/social-icons/instagram.svg'
 import { useLocale, useTranslations } from 'next-intl'
 
 const Footer = () => {
