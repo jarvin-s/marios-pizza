@@ -27,7 +27,7 @@ const SheetLanguageSwitcher = () => {
     return (
         <Button
             variant='default'
-            className={`${poppins.className} bg-primary-green font-bold text-white duration-300 hover:bg-primary-green/60`}
+            className={`${poppins.className} w-full bg-primary-green font-bold text-white duration-300 hover:bg-primary-green/60`}
             onClick={() => changeLocale(selectedLocale === 'nl' ? 'en' : 'nl')}
         >
             {selectedLocale === 'en' ? (

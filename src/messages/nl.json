@@ -1,9 +1,12 @@
 {
     "home": {
+        "title": "Zin in pizza? Bestel nu!",
         "button": "Bezorgen",
         "button2": "Afhalen"
     },
     "menu": {
+        "title": "Ons menu",
+        "description": "Snel, vers en onweerstaanbaar lekker – ontdek jouw favoriet!",
         "all-button": "Alle",
         "meat-button": "Vlees",
         "vegetarian-button": "Vegetarisch",
@@ -22,7 +25,7 @@
         }
     },
     "aanbiedingen": {
-        "button": "Bekijk onze huidige aanbiedingen"
+        "button": "Bekijk aanbiedingen"
     },
     "sign-in": {
         "title": "Inloggen",
@@ -46,7 +49,8 @@
     },
     "nav": {
         "aanbiedingen": "Aanbiedingen",
-        "sign-in": "Inloggen"
+        "sign-in": "Inloggen",
+        "sign-up": "Registreren"
     },
     "footer": {
         "description": "Bij Mario's Pizza brengen we de smaak van Italië naar je bord! Vers bereide pizza's, authentieke ingrediënten en een passie voorkwaliteit.",

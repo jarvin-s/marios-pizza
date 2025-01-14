@@ -25,6 +25,9 @@ const Hero = () => {
             <div
                 className={`mb-40 flex flex-col items-center ${anton.className}`}
             >
+                <h1 className='mt-10 text-center text-6xl md:text-left'>
+                    {t('title')}
+                </h1>
                 <div className='mt-10 flex flex-col md:flex-row'>
                     <Link href={`/${selectedLocale}/menu`}>
                         <Button className='w-full rounded-bl-none rounded-br-none bg-[#008c45] px-12 py-10 text-5xl uppercase hover:bg-green-600 md:rounded-bl md:rounded-tr-none'>

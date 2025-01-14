@@ -1,9 +1,12 @@
 {
     "home": {
+        "title": "In the mood for pizza? Order now!",
         "button": "Delivery",
         "button2": "Pickup"
     },
     "menu": {
+        "title": "Our menu",
+        "description": "Quick, fresh and irresistible delicious – discover your favorite!",
         "all-button": "All",
         "meat-button": "Meat",
         "vegetarian-button": "Vegetarian",
@@ -22,7 +25,7 @@
         }
     },
     "aanbiedingen": {
-        "button": "Check out our  current deals"
+        "button": "Check deals"
     },
     "sign-in": {
         "title": "Sign in",
@@ -46,7 +49,8 @@
     },
     "nav": {
         "aanbiedingen": "Deals",
-        "sign-in": "Sign in"
+        "sign-in": "Sign in",
+        "sign-up": "Sign up"
     },
     "footer": {
         "description": "At Mario's Pizza, we bring the taste of Italy to your plate! Freshly prepared pizzas, authentic ingredients, and a passion for quality.",

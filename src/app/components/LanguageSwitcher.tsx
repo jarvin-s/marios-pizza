@@ -35,8 +35,8 @@ export default function LanguageSwitcher() {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
-                    variant='default'
-                    className={`${poppins.className} bg-primary-green font-bold text-white duration-300 hover:bg-primary-green/60`}
+                    variant='ghost'
+                    className={`${poppins.className} bg-transparent font-bold text-primary-orange duration-300 hover:bg-gray-500/30 hover:text-primary-orange`}
                 >
                     {selectedLocale === 'nl' ? (
                         <>
@@ -92,11 +92,11 @@ export default function LanguageSwitcher() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-                className={`${poppins.className} w-full rounded-lg border-primary-cream bg-primary-green text-white shadow-md`}
+                className={`${poppins.className} w-full rounded-lg bg-primary-orange text-white shadow-md`}
             >
                 <DropdownMenuGroup>
                     <DropdownMenuItem
-                        className='flex cursor-pointer items-center gap-1 px-4 py-2 focus:bg-green-500'
+                        className='flex cursor-pointer items-center gap-1 px-4 py-2 focus:bg-[#a7392d]'
                         onSelect={() => changeLocale('nl')}
                     >
                         <svg
@@ -118,7 +118,7 @@ export default function LanguageSwitcher() {
                         <span className='text-white'>Nederlands</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                        className='flex cursor-pointer items-center gap-1 px-4 py-2 focus:bg-green-500'
+                        className='flex cursor-pointer items-center gap-1 px-4 py-2 focus:bg-[#a7392d]'
                         onSelect={() => changeLocale('en')}
                     >
                         <svg

@@ -43,7 +43,7 @@ const Navbar = () => {
     const t = useTranslations('nav')
     return (
         <>
-            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange shadow-md backdrop-blur-md md:justify-center'>
+            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange shadow-md backdrop-blur-md'>
                 <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button
@@ -84,14 +84,14 @@ const Navbar = () => {
                             />
                             <span className='sr-only'>Mario&apos;s Pizza</span>
                         </Link>
-                        <hr className='mt-6 border-t-[1px] border-[#49494923]' />
+                        <hr className='mt-4 border-t-[1px] border-[#49494923]' />
                         <div
                             style={{
                                 textTransform: 'none',
                                 fontFamily: 'poppins',
                             }}
                         >
-                            <p className='mt-6 flex justify-center text-3xl'>
+                            <p className='mt-4 flex justify-center text-3xl'>
                                 {session
                                     ? 'Hi, ' +
                                       session?.user.user_metadata.first_name
@@ -124,22 +124,35 @@ const Navbar = () => {
                                 Contact
                             </Link>
                         </div>
-                        <div className='mt-6 flex items-end justify-center gap-2'>
-                            <SheetLanguageSwitcher />
+                        <hr className='mt-4 border-t-[1px] border-[#49494923]' />
+                        <div className='mt-4 flex items-end justify-center'>
                             {session ? (
                                 <SignOut />
                             ) : (
-                                <Link
-                                    href={`/${selectedLocale}/sign-in`}
-                                    onClick={() => setOpen(false)}
-                                >
-                                    <Button
-                                        className={`${anton.className} bg-[#d23d2d] text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                                <div className='grid w-full grid-cols-2 gap-4'>
+                                    <Link
+                                        href={`/${selectedLocale}/sign-in`}
+                                        onClick={() => setOpen(false)}
                                     >
-                                        {t('sign-in')}
-                                    </Button>
-                                </Link>
+                                        <Button
+                                            className={`${anton.className} w-full bg-primary-orange text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                                        >
+                                            {t('sign-in')}
+                                        </Button>
+                                    </Link>
+                                    <Link href={`/${selectedLocale}/sign-up`}>
+                                        <Button
+                                            className={`${anton.className} w-full border-[1px] border-primary-orange bg-transparent text-xl uppercase text-primary-orange duration-300 hover:bg-primary-orange/30`}
+                                        >
+                                            {t('sign-up')}
+                                        </Button>
+                                    </Link>
+                                </div>
                             )}
+                            <hr className='mt-4 border-t-[1px] border-[#49494923]' />
+                        </div>
+                        <div className='mt-4'>
+                            <SheetLanguageSwitcher />
                         </div>
                     </SheetContent>
                 </Sheet>
@@ -153,7 +166,7 @@ const Navbar = () => {
                     />
                     <span className='sr-only'>Mario&apos;s Pizza</span>
                 </Link>
-                <div className='hidden md:flex md:flex-grow md:justify-center'>
+                <div className='hidden md:absolute md:left-1/2 md:mx-auto md:flex md:-translate-x-1/2 md:transform'>
                     <NavigationMenu className='hidden md:flex'>
                         <NavigationMenuList
                             className={`${anton.className} text-2xl uppercase`}
@@ -162,9 +175,9 @@ const Navbar = () => {
                                 <Link
                                     href={`/${selectedLocale}/menu`}
                                     className={
-                                        currentPath == '/menu'
-                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
-                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                        currentPath == `/${selectedLocale}/menu`
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
                                     }
                                     prefetch={false}
                                 >
@@ -175,9 +188,10 @@ const Navbar = () => {
                                 <Link
                                     href={`/${selectedLocale}/aanbiedingen`}
                                     className={
-                                        currentPath == '/aanbiedingen'
-                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
-                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                        currentPath ==
+                                        `/${selectedLocale}/aanbiedingen`
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
                                     }
                                     prefetch={false}
                                 >
@@ -188,9 +202,10 @@ const Navbar = () => {
                                 <Link
                                     href={`/${selectedLocale}/contact`}
                                     className={
-                                        currentPath == '/contact'
-                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white duration-150 disabled:pointer-events-none disabled:opacity-50'
-                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                        currentPath ==
+                                        `/${selectedLocale}/contact`
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
                                     }
                                     prefetch={false}
                                 >
@@ -201,9 +216,10 @@ const Navbar = () => {
                     </NavigationMenu>
                 </div>
 
-                <div className='ml-auto hidden items-center gap-2 md:flex'>
-                    <LanguageSwitcher />
-                    {/* {!session ? <SignOut /> : <Auth />} */}
+                <div className='ml-auto flex items-center gap-2'>
+                    <div className='hidden md:flex'>
+                        <LanguageSwitcher />
+                    </div>
                     {session ? (
                         <>
                             <span className='mr-2'>
@@ -212,13 +228,22 @@ const Navbar = () => {
                             <SignOut />
                         </>
                     ) : (
-                        <Link href={`/${selectedLocale}/sign-in`}>
-                            <Button
-                                className={`${anton.className} bg-[#d23d2d] text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
-                            >
-                                {t('sign-in')}
-                            </Button>
-                        </Link>
+                        <>
+                            <Link href={`/${selectedLocale}/sign-in`}>
+                                <Button
+                                    className={`${anton.className} bg-primary-orange text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                                >
+                                    {t('sign-in')}
+                                </Button>
+                            </Link>
+                            <Link href={`/${selectedLocale}/sign-up`}>
+                                <Button
+                                    className={`${anton.className} border-[1px] border-primary-orange bg-transparent text-xl uppercase text-primary-orange duration-300 hover:bg-primary-orange/30`}
+                                >
+                                    {t('sign-up')}
+                                </Button>
+                            </Link>
+                        </>
                     )}
                 </div>
             </header>

@@ -20,7 +20,13 @@ const Menu = () => {
     return (
         <>
             <div className='mx-auto mt-10 min-h-screen max-w-[1920px] p-0 pb-20 md:px-20'>
-                <div className='flex justify-center gap-4'>
+                <div className='flex flex-col gap-4'>
+                    <h1 className='text-center text-6xl font-bold'>
+                        {t('title')}
+                    </h1>
+                    <h1 className='text-center text-3xl'>{t('description')}</h1>
+                </div>
+                <div className='mt-10 flex justify-center gap-4'>
                     <Button
                         onClick={() => setActiveFilter('all')}
                         className={`rounded-lg px-4 py-2 ${
