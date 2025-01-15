@@ -27,6 +27,13 @@
     "aanbiedingen": {
         "button": "Check deals"
     },
+    "basket": {
+        "title": "Shopping Cart",
+        "empty": "Your cart is empty.",
+        "total": "Total",
+        "checkout": "Checkout",
+        "clear": "Clear cart"
+    },
     "sign-in": {
         "title": "Sign in",
         "email": "Email",

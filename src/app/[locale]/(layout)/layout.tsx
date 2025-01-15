@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import './globals.css'
+import '../../globals.css'
 import Providers from '@/app/components/Auth/Providers'
 import Navbar from '@/app/components/Header/Navbar'
 import Footer from '@/app/components/Footer/Footer'
 import { getLocale, getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
+import { Toaster } from '@/components/ui/toaster'
 
 const poppins = Poppins({
     weight: '400',
@@ -35,6 +36,7 @@ export default async function RootLayout({
                     <Providers>
                         <Navbar />
                         {children}
+                        <Toaster />
                         <Footer />
                     </Providers>
                 </NextIntlClientProvider>

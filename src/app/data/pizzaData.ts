@@ -21,6 +21,7 @@ export const pizzas = () => {
 
     return [
         {
+            id: 1,
             title: 'Pizza Salami',
             description: translations.pizzaSalami,
             price: '10,99',
@@ -28,6 +29,7 @@ export const pizzas = () => {
             vegan: false,
         },
         {
+            id: 2,
             title: 'Pizza Margherita',
             description: translations.pizzaMargherita,
             price: '9,99',
@@ -35,6 +37,7 @@ export const pizzas = () => {
             vegan: true,
         },
         {
+            id: 3,
             title: 'Pizza Hawaii',
             description: translations.pizzaHawaii,
             price: '11,49',
@@ -42,6 +45,7 @@ export const pizzas = () => {
             vegan: false,
         },
         {
+            id: 4,
             title: 'Pizza Chicken',
             description: translations.pizzaChicken,
             price: '11,99',
@@ -49,6 +53,7 @@ export const pizzas = () => {
             vegan: false,
         },
         {
+            id: 5,
             title: 'Pizza Pepperoni',
             description: translations.pizzaPepperoni,
             price: '11,49',
@@ -56,6 +61,7 @@ export const pizzas = () => {
             vegan: false,
         },
         {
+            id: 6,
             title: 'Pizza BBQ Chicken',
             description: translations.pizzaBBQChicken,
             price: '12,49',
@@ -63,6 +69,7 @@ export const pizzas = () => {
             vegan: false,
         },
         {
+            id: 7,
             title: 'Pizza Vegetarian',
             description: translations.pizzaVegetarian,
             price: '10,49',
@@ -70,6 +77,7 @@ export const pizzas = () => {
             vegan: true,
         },
         {
+            id: 8,
             title: 'Pizza Quattro Formaggi',
             description: translations.pizzaQuattroFormaggi,
             price: '12,99',
@@ -77,6 +85,7 @@ export const pizzas = () => {
             vegan: false,
         },
         {
+            id: 9,
             title: 'Pizza Spicy Meat',
             description: translations.pizzaSpicyMeat,
             price: '12,49',
@@ -84,6 +93,7 @@ export const pizzas = () => {
             vegan: false,
         },
         {
+            id: 10,
             title: 'Pizza Truffel',
             description: translations.pizzaTruffel,
             price: '13,49',

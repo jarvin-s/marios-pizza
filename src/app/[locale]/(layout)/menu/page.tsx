@@ -1,13 +1,15 @@
 'use client'
 
 import React, { useState } from 'react'
-import PizzaCard from '../../components/Menu/PizzaCard'
-import { pizzas } from '../../data/pizzaData'
+import PizzaCard from '../../../components/Menu/PizzaCard'
+import { pizzas } from '../../../data/pizzaData'
 import { Button } from '@/components/ui/button'
 import { useTranslations } from 'next-intl'
+import Cart from '../../../components/Menu/Cart'
 
 const Menu = () => {
     const [activeFilter, setActiveFilter] = useState('all')
+    // const [isCartOpen, setIsCartOpen] = useState(false) // State to manage cart visibility
 
     const filteredPizzas = pizzas().filter((pizza) => {
         if (activeFilter === 'all') return true
@@ -65,6 +67,8 @@ const Menu = () => {
                     ))}
                 </div>
             </div>
+
+            <Cart />
         </>
     )
 }
