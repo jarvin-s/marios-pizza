@@ -10,8 +10,8 @@ import Link from 'next/link'
 import { redirect, useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import useSession from '@/app/hooks/useSession'
-import login from '@/../public/login-image.jpg'
 import Image from 'next/image'
+import login from '@/../public/login-image.jpg'
 import logo from '@/../public/logo.svg'
 
 const anton = Anton({
@@ -19,13 +19,15 @@ const anton = Anton({
     subsets: ['latin'],
 })
 
-export default function SignInPage() {
+export default function SignUpPage() {
     const session = useSession()
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const router = useRouter()
-    const t = useTranslations('sign-in')
+
     const currentLocale = useLocale()
     const [selectedLocale, setSelectedLocale] = useState(currentLocale)
     useEffect(() => {
@@ -38,8 +40,29 @@ export default function SignInPage() {
         }
     })
 
+    const t = useTranslations('sign-up')
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        setError('')
+
+        const { data: userData, error: registerError } =
+            await supabase.auth.admin.createUser({
+                email,
+                password,
+                email_confirm: true,
+                user_metadata: {
+                    first_name: firstName,
+                    last_name: lastName,
+                },
+            })
+
+        if (registerError) {
+            console.log(userData)
+            setError(registerError.message)
+            return
+        }
+
         const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
@@ -55,7 +78,7 @@ export default function SignInPage() {
 
     return (
         <div className='flex min-h-screen'>
-            <div className='relative flex flex-1 items-center justify-center bg-gray-50 px-4 md:flex-[.4]'>
+            <div className='relative flex flex-1 items-center justify-center bg-gray-50 px-4 sm:px-6 md:flex-[.4] lg:px-8'>
                 <div className='absolute top-10'>
                     <Image
                         src={logo}
@@ -65,7 +88,7 @@ export default function SignInPage() {
                         className='h-auto'
                     />
                 </div>
-                <div className='w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-xl'>
+                <div className='w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-md'>
                     <h2
                         className={`${anton.className} text-center text-3xl text-gray-900`}
                     >
@@ -76,6 +99,37 @@ export default function SignInPage() {
                         className='flex flex-col space-y-4'
                         onSubmit={handleSubmit}
                     >
+                        <div className='flex gap-4'>
+                            <div className='flex-1 space-y-2'>
+                                <Label htmlFor='firstName'>
+                                    {t('first-name')}
+                                </Label>
+                                <Input
+                                    id='firstName'
+                                    type='text'
+                                    placeholder={t('first-name')}
+                                    value={firstName}
+                                    onChange={(e) =>
+                                        setFirstName(e.target.value)
+                                    }
+                                />
+                            </div>
+                            <div className='flex-1 space-y-2'>
+                                <Label htmlFor='lastName'>
+                                    {t('last-name')}
+                                </Label>
+                                <Input
+                                    id='lastName'
+                                    type='text'
+                                    placeholder={t('last-name')}
+                                    value={lastName}
+                                    onChange={(e) =>
+                                        setLastName(e.target.value)
+                                    }
+                                />
+                            </div>
+                        </div>
+
                         <div className='space-y-2'>
                             <Label htmlFor='email'>{t('email')}</Label>
                             <Input
@@ -86,6 +140,7 @@ export default function SignInPage() {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
+
                         <div className='space-y-2'>
                             <Label htmlFor='password'>{t('password')}</Label>
                             <Input
@@ -127,10 +182,10 @@ export default function SignInPage() {
                             <p>
                                 {t('account')}
                                 <Link
-                                    href={`/${selectedLocale}/sign-up`}
+                                    href={`/${selectedLocale}/sign-in`}
                                     className='pl-2 text-[#0090e3] hover:underline'
                                 >
-                                    {t('register')}
+                                    {t('login')}
                                 </Link>
                             </p>
                         </div>
