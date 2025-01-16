@@ -9,7 +9,6 @@ import Cart from '../../../components/Menu/Cart'
 
 const Menu = () => {
     const [activeFilter, setActiveFilter] = useState('all')
-    // const [isCartOpen, setIsCartOpen] = useState(false) // State to manage cart visibility
 
     const filteredPizzas = pizzas().filter((pizza) => {
         if (activeFilter === 'all') return true

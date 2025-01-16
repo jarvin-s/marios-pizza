@@ -57,13 +57,15 @@ export default function SignInPage() {
         <div className='flex min-h-screen'>
             <div className='relative flex flex-1 items-center justify-center bg-gray-50 px-4 md:flex-[.4]'>
                 <div className='absolute top-10'>
-                    <Image
-                        src={logo}
-                        width={300}
-                        height={300}
-                        alt="Mario's Pizza logo"
-                        className='h-auto'
-                    />
+                    <Link href={`/${selectedLocale}/`}>
+                        <Image
+                            src={logo}
+                            width={300}
+                            height={300}
+                            alt="Mario's Pizza logo"
+                            className='h-auto'
+                        />
+                    </Link>
                 </div>
                 <div className='w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-xl'>
                     <h2
