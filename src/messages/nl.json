@@ -25,7 +25,16 @@
         }
     },
     "aanbiedingen": {
+        "title": "Mario's Pizza aanbiedingen",
         "button": "Bekijk aanbiedingen"
+    },
+    "basket": {
+        "title": "Winkwelwagen",
+        "empty": "Uw winkelwagen is leeg.",
+        "total": "Totaal",
+        "checkout": "Checkout",
+        "clear": "Leegmaken",
+        "items": "Aantal"
     },
     "sign-in": {
         "title": "Inloggen",

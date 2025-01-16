@@ -25,7 +25,16 @@
         }
     },
     "aanbiedingen": {
+        "title": "Mario's Pizza offers",
         "button": "Check deals"
+    },
+    "basket": {
+        "title": "Shopping cart",
+        "empty": "Your cart is empty.",
+        "total": "Total",
+        "checkout": "Checkout",
+        "clear": "Clear cart",
+        "items": "Amount"
     },
     "sign-in": {
         "title": "Sign in",

@@ -26,7 +26,7 @@ const Hero = () => {
                         className={`${anton.className} px-4 text-center text-4xl uppercase text-white md:text-6xl`}
                     >
                         <span className='inline-block bg-[#008c45] px-6 py-3'>
-                            Mario&apos;s Pizza Menu
+                            {t('title')}
                         </span>
                     </h1>
                     <a
@@ -58,6 +58,14 @@ const Hero = () => {
                     </a>
                 </div>
             </div>
+            {/* <div className='flex justify-center'>
+                <Image
+                    src='/HUIDIGE-AANBIEDINGEN-2025.jpg'
+                    width={750}
+                    height={750}
+                    alt='Offers PDF'
+                />
+            </div> */}
         </>
     )
 }

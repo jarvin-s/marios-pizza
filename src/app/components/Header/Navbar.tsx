@@ -216,35 +216,50 @@ const Navbar = () => {
                     </NavigationMenu>
                 </div>
 
-                <div className='ml-auto flex items-center gap-2'>
-                    <div className='hidden md:flex'>
+                <div className='ml-auto flex items-center'>
+                    <div className='hidden gap-2 md:flex'>
                         <LanguageSwitcher />
+                        {session ? (
+                            <>
+                                <span className='mr-2 flex items-center justify-center'>
+                                    Hi, {session.user.user_metadata.first_name}
+                                </span>{' '}
+                                <SignOut />
+                            </>
+                        ) : (
+                            <>
+                                <Link href={`/${selectedLocale}/sign-in`}>
+                                    <Button
+                                        className={`${anton.className} bg-primary-orange text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                                    >
+                                        {t('sign-in')}
+                                    </Button>
+                                </Link>
+                                <Link href={`/${selectedLocale}/sign-up`}>
+                                    <Button
+                                        className={`${anton.className} border-[1px] border-primary-orange bg-transparent text-xl uppercase text-primary-orange duration-300 hover:bg-primary-orange/30`}
+                                    >
+                                        {t('sign-up')}
+                                    </Button>
+                                </Link>
+                            </>
+                        )}
                     </div>
-                    {session ? (
-                        <>
-                            <span className='mr-2'>
-                                Hi, {session.user.user_metadata.first_name}
-                            </span>{' '}
-                            <SignOut />
-                        </>
-                    ) : (
-                        <>
-                            <Link href={`/${selectedLocale}/sign-in`}>
-                                <Button
-                                    className={`${anton.className} bg-primary-orange text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
-                                >
-                                    {t('sign-in')}
-                                </Button>
-                            </Link>
-                            <Link href={`/${selectedLocale}/sign-up`}>
-                                <Button
-                                    className={`${anton.className} border-[1px] border-primary-orange bg-transparent text-xl uppercase text-primary-orange duration-300 hover:bg-primary-orange/30`}
-                                >
-                                    {t('sign-up')}
-                                </Button>
-                            </Link>
-                        </>
-                    )}
+                    <div className='ml-2 flex cursor-pointer rounded-lg p-[0.375rem] duration-300 hover:bg-primary-orange/40'>
+                        <Link href={`/${selectedLocale}/winkelwagen`}>
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                width='32'
+                                height='32'
+                                viewBox='0 0 24 24'
+                            >
+                                <path
+                                    fill='currentColor'
+                                    d='M7 22q-.825 0-1.412-.587T5 20t.588-1.412T7 18t1.413.588T9 20t-.587 1.413T7 22m10 0q-.825 0-1.412-.587T15 20t.588-1.412T17 18t1.413.588T19 20t-.587 1.413T17 22M6.15 6l2.4 5h7l2.75-5zM5.2 4h14.75q.575 0 .875.513t.025 1.037l-3.55 6.4q-.275.5-.737.775T15.55 13H8.1L7 15h12v2H7q-1.125 0-1.7-.987t-.05-1.963L6.6 11.6L3 4H1V2h3.25zm3.35 7h7z'
+                                />
+                            </svg>
+                        </Link>
+                    </div>
                 </div>
             </header>
         </>

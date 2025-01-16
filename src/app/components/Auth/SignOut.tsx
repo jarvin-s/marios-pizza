@@ -15,7 +15,7 @@ const SignOut = () => {
     return (
         <>
             <Button
-                className={`${anton.className} rounded-md bg-[#630A00] px-3 py-2 text-xl uppercase text-white hover:bg-[#630a00d2]`}
+                className={`${anton.className} w-full rounded-md bg-[#630A00] px-3 py-2 text-xl uppercase text-white hover:bg-[#630a00d2] md:w-auto`}
                 onClick={handleSignOut}
             >
                 Uitloggen

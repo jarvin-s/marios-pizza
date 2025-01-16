@@ -1,6 +1,6 @@
 import React from 'react'
-import Hero from '../../components/Contact/Hero'
-import Location from '../../components/Contact/Location'
+import Hero from '../../../components/Contact/Hero'
+import Location from '../../../components/Contact/Location'
 
 const Contact = () => {
     return (

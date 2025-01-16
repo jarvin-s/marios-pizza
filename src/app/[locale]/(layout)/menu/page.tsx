@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import PizzaCard from '../../components/Menu/PizzaCard'
-import { pizzas } from '../../data/pizzaData'
+import PizzaCard from '../../../components/Menu/PizzaCard'
+import { pizzas } from '../../../data/pizzaData'
 import { Button } from '@/components/ui/button'
 import { useTranslations } from 'next-intl'
 
