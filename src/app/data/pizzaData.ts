@@ -23,6 +23,7 @@ export const pizzas = () => {
         {
             id: 1,
             title: 'Pizza Salami',
+            short_title: 'SLM',
             description: translations.pizzaSalami,
             price: '10,99',
             imageUrl: '/images/menu/pizza-salami.jpg',
@@ -31,6 +32,7 @@ export const pizzas = () => {
         {
             id: 2,
             title: 'Pizza Margherita',
+            short_title: 'MRGHRT',
             description: translations.pizzaMargherita,
             price: '9,99',
             imageUrl: '/images/menu/pizza-margherita.jpg',
@@ -39,6 +41,7 @@ export const pizzas = () => {
         {
             id: 3,
             title: 'Pizza Hawaii',
+            short_title: 'HWII',
             description: translations.pizzaHawaii,
             price: '11,49',
             imageUrl: '/images/menu/pizza-hawaii.jpg',
@@ -47,6 +50,7 @@ export const pizzas = () => {
         {
             id: 4,
             title: 'Pizza Chicken',
+            short_title: 'CHCKN',
             description: translations.pizzaChicken,
             price: '11,99',
             imageUrl: '/images/menu/pizza-chicken.jpg',
@@ -55,6 +59,7 @@ export const pizzas = () => {
         {
             id: 5,
             title: 'Pizza Pepperoni',
+            short_title: 'PPR',
             description: translations.pizzaPepperoni,
             price: '11,49',
             imageUrl: '/images/menu/pizza-pepperoni.jpg',
@@ -63,6 +68,7 @@ export const pizzas = () => {
         {
             id: 6,
             title: 'Pizza BBQ Chicken',
+            short_title: 'BBQCHCKN',
             description: translations.pizzaBBQChicken,
             price: '12,49',
             imageUrl: '/images/menu/pizza-bbq-chicken.jpg',
@@ -71,6 +77,7 @@ export const pizzas = () => {
         {
             id: 7,
             title: 'Pizza Vegetarian',
+            short_title: 'VGTRN',
             description: translations.pizzaVegetarian,
             price: '10,49',
             imageUrl: '/images/menu/pizza-veggie.jpg',
@@ -79,6 +86,7 @@ export const pizzas = () => {
         {
             id: 8,
             title: 'Pizza Quattro Formaggi',
+            short_title: 'QTFRMG',
             description: translations.pizzaQuattroFormaggi,
             price: '12,99',
             imageUrl: '/images/menu/pizza-quattro-formaggi.jpg',
@@ -87,6 +95,7 @@ export const pizzas = () => {
         {
             id: 9,
             title: 'Pizza Spicy Meat',
+            short_title: 'SPMEAT',
             description: translations.pizzaSpicyMeat,
             price: '12,49',
             imageUrl: '/images/menu/pizza-spicy-meat.jpg',
@@ -95,6 +104,7 @@ export const pizzas = () => {
         {
             id: 10,
             title: 'Pizza Truffel',
+            short_title: 'TRFFL',
             description: translations.pizzaTruffel,
             price: '13,49',
             imageUrl: '/images/menu/pizza-truffel.jpg',

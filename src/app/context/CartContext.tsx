@@ -10,6 +10,7 @@ import React, {
 interface CartItem {
     id: number
     title: string
+    short_title: string
     price: string
     imageUrl: string
     vegan: boolean

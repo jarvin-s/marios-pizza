@@ -13,6 +13,7 @@ const anton = Anton({
 interface PizzaCardProps {
     id: number
     title: string
+    short_title: string
     description: string
     price: string
     imageUrl: string
@@ -22,6 +23,7 @@ interface PizzaCardProps {
 const PizzaCard = ({
     id,
     title,
+    short_title,
     description,
     price,
     imageUrl,
@@ -30,7 +32,7 @@ const PizzaCard = ({
     const { addToCart } = useCart()
 
     const handleAddToCart = () => {
-        addToCart({ id, title, price, imageUrl, vegan })
+        addToCart({ id, title, short_title, price, imageUrl, vegan })
         toast({
             title: 'Item toegevoegd aan winkelwagen!',
             description: 'Je kunt het in je winkelwagen bekijken.',
@@ -66,15 +68,13 @@ const PizzaCard = ({
                         <h1 className={`${anton.className} text-4xl font-bold`}>
                             {price}
                         </h1>
-                        <a className={`${anton.className}`} href='#'>
-                            <Button
-                                size={'lg'}
-                                className='bg-[#008c45] text-2xl uppercase hover:bg-[#2ca86a]'
-                                onClick={handleAddToCart}
-                            >
-                                {t('add-button')}
-                            </Button>
-                        </a>
+                        <Button
+                            size={'lg'}
+                            className={`${anton.className} bg-[#008c45] text-2xl uppercase hover:bg-[#2ca86a]`}
+                            onClick={handleAddToCart}
+                        >
+                            {t('add-button')}
+                        </Button>
                     </div>
                 </div>
             </div>

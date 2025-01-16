@@ -7,20 +7,89 @@ import { useToast } from '@/hooks/use-toast'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
+interface GroupedCartItem {
+    id: number
+    title: string
+    short_title: string
+    price: string
+    imageUrl: string
+    vegan: boolean
+    hoeveelheid: number
+}
+
 const Cart = () => {
     const { cart, clearCart } = useCart()
     const { toast } = useToast()
     const t = useTranslations('basket')
+    const total = cart
+        .reduce((total, item) => total + parseFloat(item.price), 0)
+        .toFixed(2)
+
     const handlePayment = async () => {
-        const { error } = await supabase.from('orders').insert(
-            cart.map((item) => ({
-                id: item.id,
-                title: item.title,
-                price: item.price,
-                imageUrl: item.imageUrl,
-                vegan: item.vegan,
-            }))
-        )
+        // Local database
+        // const { error } = await supabase.from('orders').insert(
+        //     cart.map((item) => ({
+        //         product_id: item.id,
+        //         title: item.title,
+        //         short_title: item.short_title,
+        //         price: item.price,
+        //         imageUrl: item.imageUrl,
+        //         vegan: item.vegan,
+        //     }))
+        // )
+
+        // Remote database (Eindhoven)
+        const groupedItems = cart.reduce<GroupedCartItem[]>((acc, item) => {
+            const existingItem = acc.find((cartItem) => cartItem.id === item.id)
+            if (existingItem) {
+                existingItem.hoeveelheid += 1
+            } else {
+                acc.push({ ...item, hoeveelheid: 1 })
+            }
+            return acc
+        }, [])
+
+        // Get amount of pizzas & save in "inhoud" row as "1x (PIZZA ABBREVIATION)"
+        const inhoud = groupedItems
+            .map((item) => `${item.hoeveelheid}x ${item.short_title}`)
+            .join(', ')
+
+        const { data: bestellingData, error: bestellingError } = await supabase
+            .from('bestelling')
+            .insert({
+                betaald: true,
+                status: null,
+                totaalPrijs: total,
+                inhoud: inhoud,
+            })
+            .select('id')
+
+        if (bestellingError) {
+            console.log(bestellingError)
+            return
+        }
+
+        // Create variable to save orderId
+        const bestellingId = bestellingData[0].id
+
+        // Add newest order to orderline table (with productIDs & amount of said product)
+        const { error: bestelregelError } = await supabase
+            .from('bestelregel')
+            .insert(
+                groupedItems.map((item) => ({
+                    bestellingID: bestellingId,
+                    productID: item.id,
+                    hoeveelheid: item.hoeveelheid,
+                }))
+            )
+
+        if (bestelregelError) {
+            toast({
+                title: 'Kon de bestelling niet plaatsen',
+                variant: 'destructive',
+                description: bestelregelError.message,
+            })
+        }
 
         if (!cart.length) {
             toast({
@@ -31,8 +100,8 @@ const Cart = () => {
             return
         }
 
-        if (error) {
-            console.log(error)
+        if (bestelregelError) {
+            console.log(bestelregelError)
         } else {
             clearCart()
             toast({
@@ -40,7 +109,7 @@ const Cart = () => {
                 variant: 'default',
                 description: 'Hartelijk bedankt voor uw bestelling!',
                 style: {
-                    backgroundColor: '#4bb543',
+                    backgroundColor: '#2d8626',
                     color: '#fff',
                 },
             })
@@ -51,19 +120,16 @@ const Cart = () => {
         clearCart()
     }
 
-    const total = cart
-        .reduce((total, item) => total + parseFloat(item.price), 0)
-        .toFixed(2)
     const itemCount = cart.length
 
     return (
         <>
             <div className='relative py-24'>
-                <div className='mx-auto flex max-w-[1000px] flex-col px-4 md:px-0'>
+                <div className='mx-auto flex max-w-[500px] flex-col px-4 md:px-0'>
                     <h2 className='mb-8 text-center text-4xl font-bold text-black'>
                         {t('title')}
                     </h2>
-                    <div className='flex flex-col space-y-4 bg-white shadow-md'>
+                    <div className='flex flex-col space-y-4 bg-white'>
                         {cart.length === 0 ? (
                             <p className='text-gray-500'>{t('empty')}</p>
                         ) : (

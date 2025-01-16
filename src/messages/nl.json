@@ -25,6 +25,7 @@
         }
     },
     "aanbiedingen": {
+        "title": "Mario's Pizza aanbiedingen",
         "button": "Bekijk aanbiedingen"
     },
     "basket": {
