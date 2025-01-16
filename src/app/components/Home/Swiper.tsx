@@ -36,26 +36,48 @@ const Slider = () => {
             >
                 <SwiperSlide>
                     <Link href={`/${selectedLocale}/menu`}>
-                        <Image
-                            className='rounded-lg'
-                            src='/images/home/carousel-1.jpg'
-                            alt='Carousel image 1'
-                            width={1920}
-                            height={1080}
-                            loading='lazy'
-                        />
+                        {selectedLocale == 'nl' ? (
+                            <Image
+                                className='rounded-lg'
+                                src='/images/home/carousel-1.jpg'
+                                alt='Carousel image 1'
+                                width={1920}
+                                height={1080}
+                                loading='lazy'
+                            />
+                        ) : (
+                            <Image
+                                className='rounded-lg'
+                                src='/images/home/carousel-1-ENGLISH.jpg'
+                                alt='Carousel image 1'
+                                width={1920}
+                                height={1080}
+                                loading='lazy'
+                            />
+                        )}
                     </Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     <Link href={`/${selectedLocale}/menu`}>
-                        <Image
-                            className='rounded-lg'
-                            src='/images/home/carousel-2.jpg'
-                            alt='Carousel image 2'
-                            width={1920}
-                            height={1080}
-                            loading='lazy'
-                        />
+                        {selectedLocale == 'nl' ? (
+                            <Image
+                                className='rounded-lg'
+                                src='/images/home/carousel-2.jpg'
+                                alt='Carousel image 2'
+                                width={1920}
+                                height={1080}
+                                loading='lazy'
+                            />
+                        ) : (
+                            <Image
+                                className='rounded-lg'
+                                src='/images/home/carousel-2-ENGLISH.jpg'
+                                alt='Carousel image 2'
+                                width={1920}
+                                height={1080}
+                                loading='lazy'
+                            />
+                        )}
                     </Link>
                 </SwiperSlide>
                 <div className='swiper-custom-pagination mt-4 flex justify-center' />
