@@ -5,6 +5,8 @@ import {
     SheetTrigger,
     SheetContent,
     SheetTitle,
+    SheetHeader,
+    SheetDescription,
 } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -17,8 +19,11 @@ import { Anton } from 'next/font/google'
 import SignOut from '../Auth/SignOut'
 import Image from 'next/image'
 import logo from '../../../../public/logo.svg'
-import Auth from '../Auth/Auth'
 import useSession from '@/app/hooks/useSession'
+import { usePathname } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
+import LanguageSwitcher from '../LanguageSwitcher'
+import SheetLanguageSwitcher from '../SheetLanguageSwitcher'
 
 const anton = Anton({
     weight: '400',
@@ -27,10 +32,19 @@ const anton = Anton({
 
 const Navbar = () => {
     const session = useSession()
+    const currentPath = usePathname()
+    const currentLocale = useLocale()
+    const [selectedLocale, setSelectedLocale] = useState(currentLocale)
+    const [open, setOpen] = useState(false)
+    useEffect(() => {
+        setSelectedLocale(currentLocale)
+    }, [currentLocale])
+
+    const t = useTranslations('nav')
     return (
         <>
-            <header className='sticky top-0 z-[100] flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange backdrop-blur-md md:justify-center'>
-                <Sheet>
+            <header className='sticky top-0 z-50 flex h-20 w-full shrink-0 items-center border-b-[1px] border-[#ffffff48] bg-primary-cream px-6 text-primary-orange shadow-md backdrop-blur-md'>
+                <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button
                             size='icon'
@@ -43,45 +57,105 @@ const Navbar = () => {
                         </Button>
                     </SheetTrigger>
                     <SheetContent
-                        className='z-[999] bg-primary-cream text-primary-orange'
+                        className={`${anton.className} z-[999] bg-primary-cream uppercase text-primary-orange`}
                         side='left'
                     >
+                        <SheetHeader>
+                            <SheetDescription hidden>
+                                {' '}
+                                Mario&apos;s Pizza
+                            </SheetDescription>
+                        </SheetHeader>
                         <SheetTitle className='hidden'>
-                            Mario's Pizza
+                            Mario&apos;s Pizza
                         </SheetTitle>
                         <Link
                             className='flex justify-center'
-                            href='#'
+                            href='/'
                             prefetch={false}
+                            onClick={() => setOpen(false)}
                         >
-                            <span className='sr-only'>Mario's Pizza</span>
+                            <Image
+                                className='ml-4 md:ml-0'
+                                src={logo}
+                                alt='Marios Pizza Logo'
+                                width={150}
+                                height={0}
+                            />
+                            <span className='sr-only'>Mario&apos;s Pizza</span>
                         </Link>
+                        <hr className='mt-4 border-t-[1px] border-[#49494923]' />
+                        <div
+                            style={{
+                                textTransform: 'none',
+                                fontFamily: 'poppins',
+                            }}
+                        >
+                            <p className='mt-4 flex justify-center text-3xl'>
+                                {session
+                                    ? 'Hi, ' +
+                                      session?.user.user_metadata.first_name
+                                    : ''}
+                            </p>
+                        </div>
                         <div className='grid gap-2 py-6'>
                             <Link
-                                href='/'
-                                className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
+                                href={`/${selectedLocale}/menu`}
+                                className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
+                                onClick={() => setOpen(false)}
                             >
-                                Home
+                                Menu
                             </Link>
                             <Link
-                                href='/aanbiedingen'
-                                className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
+                                href={`/${selectedLocale}/aanbiedingen`}
+                                className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
+                                onClick={() => setOpen(false)}
                             >
-                                Aanbiedingen
+                                {t('aanbiedingen')}
                             </Link>
                             <Link
-                                href='/contact'
-                                className='flex w-full items-center py-2 text-lg font-semibold hover:underline'
+                                href={`/${selectedLocale}/contact`}
+                                className='flex w-full items-center py-2 text-2xl hover:underline'
                                 prefetch={false}
+                                onClick={() => setOpen(false)}
                             >
                                 Contact
                             </Link>
                         </div>
+                        <hr className='mt-4 border-t-[1px] border-[#49494923]' />
+                        <div className='mt-4 flex items-end justify-center'>
+                            {session ? (
+                                <SignOut />
+                            ) : (
+                                <div className='grid w-full grid-cols-2 gap-4'>
+                                    <Link
+                                        href={`/${selectedLocale}/sign-in`}
+                                        onClick={() => setOpen(false)}
+                                    >
+                                        <Button
+                                            className={`${anton.className} w-full bg-primary-orange text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                                        >
+                                            {t('sign-in')}
+                                        </Button>
+                                    </Link>
+                                    <Link href={`/${selectedLocale}/sign-up`}>
+                                        <Button
+                                            className={`${anton.className} w-full border-[1px] border-primary-orange bg-transparent text-xl uppercase text-primary-orange duration-300 hover:bg-primary-orange/30`}
+                                        >
+                                            {t('sign-up')}
+                                        </Button>
+                                    </Link>
+                                </div>
+                            )}
+                            <hr className='mt-4 border-t-[1px] border-[#49494923]' />
+                        </div>
+                        <div className='mt-4'>
+                            <SheetLanguageSwitcher />
+                        </div>
                     </SheetContent>
                 </Sheet>
-
                 <Link href='/' className='flex'>
                     <Image
                         className='ml-4 md:ml-0'
@@ -90,17 +164,21 @@ const Navbar = () => {
                         width={150}
                         height={0}
                     />
-                    <span className='sr-only'>Mario's Pizza</span>
+                    <span className='sr-only'>Mario&apos;s Pizza</span>
                 </Link>
-                <div className='hidden md:flex md:flex-grow md:justify-center'>
+                <div className='hidden md:absolute md:left-1/2 md:mx-auto md:flex md:-translate-x-1/2 md:transform'>
                     <NavigationMenu className='hidden md:flex'>
                         <NavigationMenuList
                             className={`${anton.className} text-2xl uppercase`}
                         >
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/'
-                                    className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    href={`/${selectedLocale}/menu`}
+                                    className={
+                                        currentPath == `/${selectedLocale}/menu`
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    }
                                     prefetch={false}
                                 >
                                     Menu
@@ -108,17 +186,27 @@ const Navbar = () => {
                             </NavigationMenuLink>
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/aanbiedingen'
-                                    className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    href={`/${selectedLocale}/aanbiedingen`}
+                                    className={
+                                        currentPath ==
+                                        `/${selectedLocale}/aanbiedingen`
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    }
                                     prefetch={false}
                                 >
-                                    Aanbiedingen{' '}
+                                    {t('aanbiedingen')}
                                 </Link>
                             </NavigationMenuLink>
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href='/contact'
-                                    className='group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 duration-150 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    href={`/${selectedLocale}/contact`}
+                                    className={
+                                        currentPath ==
+                                        `/${selectedLocale}/contact`
+                                            ? 'group inline-flex h-9 w-max items-center justify-center rounded-full bg-primary-orange px-4 py-2 text-white disabled:pointer-events-none disabled:opacity-50'
+                                            : 'group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 hover:bg-primary-orange hover:text-white disabled:pointer-events-none disabled:opacity-50'
+                                    }
                                     prefetch={false}
                                 >
                                     Contact
@@ -128,9 +216,50 @@ const Navbar = () => {
                     </NavigationMenu>
                 </div>
 
-                <div className='ml-auto hidden items-center md:flex'>
-                    {/* {!session ? <SignOut /> : <Auth />} */}
-                    {session ? <SignOut /> : <Auth />}
+                <div className='ml-auto flex items-center'>
+                    <div className='hidden gap-2 md:flex'>
+                        <LanguageSwitcher />
+                        {session ? (
+                            <>
+                                <span className='mr-2 flex items-center justify-center'>
+                                    Hi, {session.user.user_metadata.first_name}
+                                </span>{' '}
+                                <SignOut />
+                            </>
+                        ) : (
+                            <>
+                                <Link href={`/${selectedLocale}/sign-in`}>
+                                    <Button
+                                        className={`${anton.className} bg-primary-orange text-xl uppercase text-white duration-300 hover:bg-[#b93329ab]`}
+                                    >
+                                        {t('sign-in')}
+                                    </Button>
+                                </Link>
+                                <Link href={`/${selectedLocale}/sign-up`}>
+                                    <Button
+                                        className={`${anton.className} border-[1px] border-primary-orange bg-transparent text-xl uppercase text-primary-orange duration-300 hover:bg-primary-orange/30`}
+                                    >
+                                        {t('sign-up')}
+                                    </Button>
+                                </Link>
+                            </>
+                        )}
+                    </div>
+                    <div className='ml-2 flex cursor-pointer rounded-lg p-[0.375rem] duration-300 hover:bg-primary-orange/40'>
+                        <Link href={`/${selectedLocale}/winkelwagen`}>
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                width='32'
+                                height='32'
+                                viewBox='0 0 24 24'
+                            >
+                                <path
+                                    fill='currentColor'
+                                    d='M7 22q-.825 0-1.412-.587T5 20t.588-1.412T7 18t1.413.588T9 20t-.587 1.413T7 22m10 0q-.825 0-1.412-.587T15 20t.588-1.412T17 18t1.413.588T19 20t-.587 1.413T17 22M6.15 6l2.4 5h7l2.75-5zM5.2 4h14.75q.575 0 .875.513t.025 1.037l-3.55 6.4q-.275.5-.737.775T15.55 13H8.1L7 15h12v2H7q-1.125 0-1.7-.987t-.05-1.963L6.6 11.6L3 4H1V2h3.25zm3.35 7h7z'
+                                />
+                            </svg>
+                        </Link>
+                    </div>
                 </div>
             </header>
         </>
@@ -139,7 +268,7 @@ const Navbar = () => {
 
 export default Navbar
 
-function MenuIcon(props: any) {
+function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}
@@ -159,72 +288,3 @@ function MenuIcon(props: any) {
         </svg>
     )
 }
-
-// 'use client'
-
-// import { useState } from 'react'
-
-// const Navbar = () => {
-//     const [overlayStyle, setOverlayStyle] = useState({
-//         left: 0,
-//         top: 0,
-//         width: 0,
-//         height: 0,
-//         opacity: 0,
-//     })
-
-//     const handleMouseOver = (e: React.MouseEvent<HTMLLIElement>) => {
-//         const rect = e.currentTarget.getBoundingClientRect()
-//         setOverlayStyle({
-//             left: rect.x,
-//             top: rect.y + window.scrollY,
-//             width: rect.width,
-//             height: rect.height,
-//             opacity: 1,
-//         })
-//     }
-
-//     const handleMouseOut = () => {
-//         setOverlayStyle((prev) => ({ ...prev, opacity: 0 }))
-//     }
-
-//     const navItems = ['Home', 'About', 'Contact', 'Shop', 'Portfolio / Works']
-
-//     return (
-//         <header className='relative mt-4 flex items-center justify-center'>
-//             <div className='relative'>
-//                 {/* Hover Overlay */}
-//                 <div
-//                     className='absolute z-0 rounded-md bg-red-500 transition-all duration-300'
-//                     style={{
-//                         left: `${overlayStyle.left}px`,
-//                         top: `${overlayStyle.top}px`,
-//                         width: `${overlayStyle.width}px`,
-//                         height: `${overlayStyle.height}px`,
-//                         opacity: overlayStyle.opacity,
-//                     }}
-//                 ></div>
-//                 {/* Navigation Items */}
-//                 <ul className='relative z-10 flex items-center justify-center space-x-4'>
-//                     {navItems.map((item) => (
-//                         <li
-//                             key={item}
-//                             onMouseOver={handleMouseOver}
-//                             onMouseOut={handleMouseOut}
-//                             className='relative cursor-pointer list-none px-4 py-2 text-lg font-semibold text-black'
-//                         >
-//                             <a
-//                                 href='#'
-//                                 className='text-black transition hover:text-gray-600'
-//                             >
-//                                 {item}
-//                             </a>
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         </header>
-//     )
-// }
-
-// export default Navbar

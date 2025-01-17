@@ -9,7 +9,38 @@
 }
 
 @layer base {
-  :root {
+    :root {
         --radius: 0.5rem;
     }
+}
+
+/* Swiper */
+.swiper {
+    width: 60%;
+}
+@media (max-width: 768px) {
+    .swiper {
+        width: 95%;
+    }
+}
+
+.swiper-slide {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-custom-pagination .swiper-pagination-bullet {
+    background-color: #000;
+    opacity: 0.5;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.swiper-custom-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }

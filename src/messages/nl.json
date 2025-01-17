@@ -1,0 +1,143 @@
+{
+    "home": {
+        "title": "Zin in pizza? Bestel nu!",
+        "button": "Bezorgen",
+        "button2": "Afhalen"
+    },
+    "menu": {
+        "title": "Ons menu",
+        "description": "Snel, vers en onweerstaanbaar lekker – ontdek jouw favoriet!",
+        "all-button": "Alle",
+        "meat-button": "Vlees",
+        "vegetarian-button": "Vegetarisch",
+        "add-button": "Toevoegen",
+        "pizzas": {
+            "pizza-salami": "Rijkelijk belegd met de beste ingrediënten en heerlijke plakjes pittige salami.",
+            "pizza-margherita": "De klassieke pizza met tomatensaus, mozzarella en basilicum.",
+            "pizza-hawaii": "Een heerlijke combinatie van sappige ananas, ham en gesmolten kaas op een knapperige bodem.",
+            "pizza-chicken": "Een smakelijke pizza belegd met malse stukjes kip, verse groenten en romige mozzarella.",
+            "pizza-pepperoni": "Een klassieke pizza met een royale hoeveelheid pepperoni en gesmolten kaas.",
+            "pizza-bbq-chicken": "Een heerlijke combinatie van gegrilde kip, BBQ-saus, rode ui en mozzarella.",
+            "pizza-veggie": "Een pizza met een romige basis, een rijke tomatensaus en een variatie aan verse groenten.",
+            "pizza-quattro-formaggi": "Een rijke combinatie van vier verschillende kazen: mozzarella, gorgonzola, pecorino en parmezaan.",
+            "pizza-spicy-meat": "Een vurige pizza met pittige salami, pepperoni, jalapeños en gekruid gehakt.",
+            "pizza-truffel": "Een heerlijke pizza met truffelolie, verse champignons en mozzarella."
+        }
+    },
+    "aanbiedingen": {
+        "title": "Mario's Pizza aanbiedingen",
+        "button": "Bekijk aanbiedingen"
+    },
+    "basket": {
+        "title": "Winkwelwagen",
+        "empty": "Uw winkelwagen is leeg.",
+        "total": "Totaal",
+        "checkout": "Checkout",
+        "clear": "Leegmaken",
+        "items": "Aantal"
+    },
+    "sign-in": {
+        "title": "Inloggen",
+        "email": "E-mailadres",
+        "password": "Wachtwoord",
+        "button": "Inloggen",
+        "account": "Nog geen account?",
+        "register": "Registreer nu",
+        "error": "De combinatie van e-mailadres en wachtwoord is niet geldig."
+    },
+    "sign-up": {
+        "title": "Maak een account",
+        "first-name": "Voornaam",
+        "last-name": "Achternaam",
+        "email": "E-mailadres",
+        "password": "Wachtwoord",
+        "button": "Registreer",
+        "account": "Al een account?",
+        "login": "Log hier in",
+        "error": "Er is iets fout gegaan, vul opnieuw uw gegevens in."
+    },
+    "nav": {
+        "aanbiedingen": "Aanbiedingen",
+        "sign-in": "Inloggen",
+        "sign-up": "Registreren"
+    },
+    "footer": {
+        "description": "Bij Mario's Pizza brengen we de smaak van Italië naar je bord! Vers bereide pizza's, authentieke ingrediënten en een passie voorkwaliteit.",
+        "openingstijden": "Openingstijden",
+        "maandag": "maandag:",
+        "dinsdag": "dinsdag:",
+        "woensdag": "woensdag:",
+        "donderdag": "donderdag:",
+        "vrijdag": "vrijdag:",
+        "zaterdag": "zaterdag:",
+        "zondag": "zondag:",
+        "rechten": "Alle rechten voorbehouden.",
+        "tos": "Algemene voorwaarden",
+        "links": {
+            "title": "Snelle links",
+            "aanbiedingen": "Aanbiedingen"
+        }
+    },
+    "contact": {
+        "hulp": "Hulp nodig?",
+        "hulp-banner": "We staan voor je klaar!",
+        "form": {
+            "voornaam": "Voornaam",
+            "achternaam": "Achternaam",
+            "telefoon": "Telefoonnummer",
+            "email": "E-mailadres",
+            "bericht": "Bericht",
+            "uw-bericht": "Uw bericht",
+            "verzenden": "Verzenden"
+        },
+        "vestigingen": {
+            "titel": "Onze vestigingen"
+        }
+    },
+    "tos": {
+        "title": "Algemene voorwaarden",
+        "sections": [
+            {
+                "title": "1. Algemeen",
+                "content": "Deze algemene voorwaarden zijn van toepassing op alle diensten en aanbiedingen van Mario's Pizza. Door gebruik te maken van onze diensten gaat u akkoord met deze voorwaarden."
+            },
+            {
+                "title": "2. Dienstverlening",
+                "content": "Wij streven ernaar onze diensten zo goed mogelijk aan te bieden. We behouden ons het recht voor om wijzigingen aan te brengen in onze diensten zonder voorafgaande kennisgeving."
+            },
+            {
+                "title": "3. Gebruiksvoorwaarden",
+                "content": [
+                    "U dient minimaal 18 jaar oud te zijn om gebruik te maken van onze diensten.",
+                    "U bent verantwoordelijk voor het geheimhouden van uw accountgegevens.",
+                    "Het is niet toegestaan om onze diensten te gebruiken voor illegale doeleinden."
+                ]
+            },
+            {
+                "title": "4. Privacy en Gegevensbescherming",
+                "content": "Wij hechten groot belang aan de bescherming van uw persoonsgegevens. Voor meer informatie verwijzen wij u naar ons privacybeleid."
+            },
+            {
+                "title": "5. Intellectueel Eigendom",
+                "content": "Alle content op deze website, inclusief maar niet beperkt tot teksten, afbeeldingen en logo's, is eigendom van Mario's Pizza en wordt beschermd door intellectuele eigendomsrechten."
+            },
+            {
+                "title": "6. Aansprakelijkheid",
+                "content": "Wij zijn niet aansprakelijk voor eventuele schade die voortvloeit uit het gebruik van onze diensten, tenzij er sprake is van opzet of grove nalatigheid van onze kant."
+            },
+            {
+                "title": "7. Wijzigingen",
+                "content": "Wij behouden ons het recht voor om deze algemene voorwaarden op elk moment te wijzigen. Wijzigingen worden gepubliceerd op onze website."
+            },
+            {
+                "title": "8. Contact",
+                "content": [
+                    "Heeft u vragen over deze algemene voorwaarden? Neem dan contact met ons op via:\nEmail: info@mariospizza.nl",
+                    "Telefoon: 06 12345678",
+                    "Adres: Rachelsmolen 1, 5612 MA Eindhoven"
+                ]
+            }
+        ],
+        "last-update": "Laatste update: "
+    }
+}
