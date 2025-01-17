@@ -1,6 +1,6 @@
 {
     "extends": ["prettier"],
-    "eslint": {
-        "ignoreDuringBuilds": true
+    "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
     }
 }
