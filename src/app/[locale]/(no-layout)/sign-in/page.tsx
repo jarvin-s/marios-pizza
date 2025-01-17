@@ -67,7 +67,7 @@ export default function SignInPage() {
                         />
                     </Link>
                 </div>
-                <div className='w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-xl'>
+                <div className='w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-xl mt-20'>
                     <h2
                         className={`${anton.className} text-center text-3xl text-gray-900`}
                     >
@@ -139,7 +139,7 @@ export default function SignInPage() {
                     </form>
                 </div>
             </div>
-            <div className='hidden bg-blue-500 md:flex md:flex-[.6]'>
+            <div className='hidden md:flex md:flex-[.6]'>
                 <Image
                     src={login}
                     width={0}

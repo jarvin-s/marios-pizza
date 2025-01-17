@@ -59,7 +59,7 @@ const Menu = () => {
                     </Button>
                 </div>
 
-                <div className='grid grid-cols-1 px-4 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-4 lg:grid-cols-4'>
+                <div className='grid grid-cols-1 px-4 sm:gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-4'>
                     {filteredPizzas.map((pizza, index) => (
                         <PizzaCard key={index} {...pizza} />
                     ))}

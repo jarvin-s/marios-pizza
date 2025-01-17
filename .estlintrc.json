@@ -1,6 +1,3 @@
 {
-    "extends": ["prettier"],
-    "rules": {
-        "@typescript-eslint/no-unused-vars": "off"
-    }
+    "extends": ["prettier"]
 }
