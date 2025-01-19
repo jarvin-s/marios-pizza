@@ -43,7 +43,9 @@
         "button": "Sign in",
         "account": "Don't have an account?",
         "register": "Register now",
-        "error": "The combination of email address and password is not valid."
+        "error": "The combination of email address and password is not valid.",
+        "google": "Sign in with Google",
+        "or": "or"
     },
     "sign-up": {
         "title": "Create an account",

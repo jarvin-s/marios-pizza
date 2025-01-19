@@ -24,6 +24,7 @@ import { usePathname } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import LanguageSwitcher from '../LanguageSwitcher'
 import SheetLanguageSwitcher from '../SheetLanguageSwitcher'
+import { useCart } from '@/app/context/CartContext'
 
 const anton = Anton({
     weight: '400',
@@ -31,6 +32,7 @@ const anton = Anton({
 })
 
 const Navbar = () => {
+    const { cart } = useCart()
     const session = useSession()
     const currentPath = usePathname()
     const currentLocale = useLocale()
@@ -94,7 +96,8 @@ const Navbar = () => {
                             <p className='mt-4 flex justify-center text-3xl'>
                                 {session
                                     ? 'Hi, ' +
-                                      session?.user.user_metadata.first_name
+                                      (session?.user.user_metadata.first_name ||
+                                          session?.user.user_metadata.name)
                                     : ''}
                             </p>
                         </div>
@@ -222,7 +225,9 @@ const Navbar = () => {
                         {session ? (
                             <>
                                 <span className='mr-2 flex items-center justify-center'>
-                                    Hi, {session.user.user_metadata.first_name}
+                                    Hi,{' '}
+                                    {session?.user.user_metadata.first_name ||
+                                        session?.user.user_metadata.name}
                                 </span>{' '}
                                 <SignOut />
                             </>
@@ -245,7 +250,16 @@ const Navbar = () => {
                             </>
                         )}
                     </div>
-                    <div className='ml-2 flex cursor-pointer rounded-lg p-[0.375rem] duration-300 hover:bg-primary-orange/40'>
+                    <div className='relative ml-2 flex cursor-pointer rounded-lg p-[0.375rem] duration-300 hover:bg-primary-orange/40'>
+                        {cart.length > 0 ? (
+                            <span className='absolute left-[20px] top-[2px] h-[18px] w-[18px] rounded-full bg-yellow-400 text-black'>
+                                <span className='flex justify-center text-sm'>
+                                    {cart.length}
+                                </span>
+                            </span>
+                        ) : (
+                            ''
+                        )}
                         <Link href={`/${selectedLocale}/winkelwagen`}>
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'

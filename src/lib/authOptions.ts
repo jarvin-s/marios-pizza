@@ -1,6 +1,7 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { supabase } from '@/app/lib/supaBaseClient'
+import GoogleProvider from 'next-auth/providers/google'
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -25,6 +26,10 @@ export const authOptions: NextAuthOptions = {
                 return data?.user || null;
             },
         }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+        })
     ],
     session: {
         strategy: 'jwt',
@@ -35,13 +40,16 @@ export const authOptions: NextAuthOptions = {
             if (user) {
                 token.id = user.id;
                 token.email = user.email;
+                if (user.name) {
+                    token.name = user.name;
+                }
             }
             return token;
         },
         async session({ session, token }) {
             if (session?.user) {
                 session.user.email = token.email as string;
-                session.user.name = token.name as string
+                session.user.name = token.name as string;
             }
             return session;
         },

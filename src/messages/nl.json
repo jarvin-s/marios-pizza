@@ -43,7 +43,9 @@
         "button": "Inloggen",
         "account": "Nog geen account?",
         "register": "Registreer nu",
-        "error": "De combinatie van e-mailadres en wachtwoord is niet geldig."
+        "error": "De combinatie van e-mailadres en wachtwoord is niet geldig.",
+        "google": "Inloggen met Google",
+        "or": "of"
     },
     "sign-up": {
         "title": "Maak een account",
