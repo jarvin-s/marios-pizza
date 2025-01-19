@@ -26,18 +26,6 @@ const Cart = () => {
         .toFixed(2)
 
     const handlePayment = async () => {
-        // Local database
-        // const { error } = await supabase.from('orders').insert(
-        //     cart.map((item) => ({
-        //         product_id: item.id,
-        //         title: item.title,
-        //         short_title: item.short_title,
-        //         price: item.price,
-        //         imageUrl: item.imageUrl,
-        //         vegan: item.vegan,
-        //     }))
-        // )
-
         // Remote database (Eindhoven)
         const groupedItems = cart.reduce<GroupedCartItem[]>((acc, item) => {
             const existingItem = acc.find((cartItem) => cartItem.id === item.id)
@@ -49,7 +37,7 @@ const Cart = () => {
             return acc
         }, [])
 
-        // Get amount of pizzas & save in "inhoud" row as "1x (PIZZA ABBREVIATION)"
+        // Get amount of pizzas & save in "inhoud" row as "1x (PIZZA ABBREVIATION) separated by comma (CSV)"
         const inhoud = groupedItems
             .map((item) => `${item.hoeveelheid}x ${item.short_title}`)
             .join(', ')
