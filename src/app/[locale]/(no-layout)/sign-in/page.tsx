@@ -56,6 +56,9 @@ export default function SignInPage() {
     const handleGoogleSignIn = async () => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
+            options: {
+                redirectTo: `https://marios-pizza.vercel.app/${selectedLocale}`,
+            },
         })
 
         if (error) {
