@@ -56,7 +56,9 @@
         "button": "Register",
         "account": "Already have an account?",
         "login": "Log in here",
-        "error": "Something went wrong, please re-enter your details."
+        "error": "Something went wrong, please re-enter your details.",
+        "google": "Sign up with Google",
+        "or": "or"
     },
     "nav": {
         "aanbiedingen": "Deals",

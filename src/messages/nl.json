@@ -56,7 +56,9 @@
         "button": "Registreer",
         "account": "Al een account?",
         "login": "Log hier in",
-        "error": "Er is iets fout gegaan, vul opnieuw uw gegevens in."
+        "error": "Er is iets fout gegaan, vul opnieuw uw gegevens in.",
+        "google": "Registreer met Google",
+        "or": "of"
     },
     "nav": {
         "aanbiedingen": "Aanbiedingen",
