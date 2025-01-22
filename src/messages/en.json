@@ -88,7 +88,10 @@
             "email": "E-mail address",
             "bericht": "Message",
             "uw-bericht": "Your message",
-            "verzenden": "Send"
+            "verzenden": "Send",
+            "loading": "Loading",
+            "success": "Form sent successfully",
+            "success-description": "Thank you for your message! We will contact you soon."
         },
         "vestigingen": {
             "titel": "Our locations"

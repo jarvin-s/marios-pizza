@@ -88,7 +88,10 @@
             "email": "E-mailadres",
             "bericht": "Bericht",
             "uw-bericht": "Uw bericht",
-            "verzenden": "Verzenden"
+            "verzenden": "Verzenden",
+            "loading": "Aan het laden",
+            "success": "Formulier succesvol verzonden",
+            "success-description": "Hartelijk bedankt voor uw bericht. Wij nemen spoedig contact met u op."
         },
         "vestigingen": {
             "titel": "Onze vestigingen"
